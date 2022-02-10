@@ -1,4 +1,4 @@
-public class Unit {
+public abstract class Unit {
     private String name;
     private int health;
     private int attack;
@@ -16,6 +16,8 @@ public class Unit {
     }
 
     public void attack(Unit opponent){
+        int newHealth = opponent.health - (this.attack + this.getAttackBonus()) + (opponent.armor + opponent.getResistBonus());
+        opponent.setHealth(newHealth);
     }
 
     public String getName() {
@@ -38,22 +40,16 @@ public class Unit {
         this.health = health;
     }
 
-    public int getAttackBonus(){
-        return 0;
-    }
+    abstract int getAttackBonus();
 
-    public int getResistBonus(){
-        return 0;
-    }
+    abstract int getResistBonus();
 
 
     @Override
     public String toString() {
-        return "Unit{" +
-                "name='" + name + '\'' +
-                ", health=" + health +
-                ", attack=" + attack +
-                ", armor=" + armor +
-                '}';
+        return "\nThe statistics of unit: \n" +name+
+                "\nHealth:\n" + health+
+                "\nDamage/DP:\n" + attack+
+                "\nArmor/AP \n" + armor;
     }
 }
