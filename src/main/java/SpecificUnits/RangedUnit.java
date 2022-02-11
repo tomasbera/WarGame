@@ -1,6 +1,6 @@
 package SpecificUnits;
-
 public class RangedUnit extends Unit {
+    private int distance = 0;
 
     /**
      * this is the constructor for all units
@@ -10,8 +10,8 @@ public class RangedUnit extends Unit {
      * @param armor  protection
      * @throws Exception if health sett < 0 or name is empty thr exception
      */
-    public RangedUnit(String name, int health, int attack, int armor) throws Exception {
-        super(name, health, attack, armor);
+    public RangedUnit(String name, int health, int attack, int armor, int melee) throws Exception {
+        super(name, health, attack, armor, melee);
     }
 
     /**
@@ -21,16 +21,20 @@ public class RangedUnit extends Unit {
      * @throws Exception if health sett < 0 thr exception
      */
     public RangedUnit(String name, int health) throws Exception {
-        super(name, health, 15, 8);
+        super(name, health, 15, 8, 2);
     }
 
     /**
-     *
-     * @return
+     * Range unit has a range attack bonus
+     * @return because this unit is range, this unit gets +3 as AttackBonus
      */
     @Override
     int getAttackBonus() {
-        return 0;
+        int range = 3;
+        if(distance == 3){
+            return this.getMelee();
+        }
+        return range;
     }
 
     /**
@@ -39,6 +43,11 @@ public class RangedUnit extends Unit {
      */
     @Override
     int getResistBonus() {
-        return 0;
+        int damageDistance = 6 - 2 * distance;
+        if(damageDistance <= 2){
+            damageDistance = 2;
+        }
+        distance ++;
+        return damageDistance;
     }
 }

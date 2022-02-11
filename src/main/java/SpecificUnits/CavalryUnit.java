@@ -1,7 +1,7 @@
 package SpecificUnits;
 
 public class CavalryUnit extends Unit {
-
+private boolean firstCharge = true;
     /**
      * this is the constructor for all units
      * @param name
@@ -10,8 +10,8 @@ public class CavalryUnit extends Unit {
      * @param armor  protection
      * @throws Exception if health sett < 0 thr exception
      */
-    public CavalryUnit(String name, int health, int attack, int armor) throws Exception {
-        super(name, health, attack, armor);
+    public CavalryUnit(String name, int health, int attack, int armor,int melee) throws Exception {
+        super(name, health, attack, armor, melee);
     }
 
     /**
@@ -21,24 +21,35 @@ public class CavalryUnit extends Unit {
      * @throws Exception if health sett < 0 or name is empty thr exception
      */
     public CavalryUnit(String name, int health) throws Exception {
-        super(name, health, 20, 12);
+        super(name, health, 20, 12, 2);
     }
 
     /**
-     *
-     * @return
+     *this method represents the attackBonuses of a cavalry unit
+     * the first attack of this unit will it will get a charge bonus +3
+     * later on it will only have the melee attack as main attackBonus
+     * @return ether +5 or +2 as a attackBonus, depends on the firstCharge bonus
      */
     @Override
     int getAttackBonus() {
-        return 0;
+        int charge = 3;
+       if(firstCharge){
+           firstCharge = false;
+           return this.getMelee() + charge;
+       }
+       else{
+           return this.getMelee();
+       }
+
     }
 
     /**
-     *
-     * @return
+     * this unit has a better protection than basic infantry, and has a bonus of +3 to resistance
+     * @return bonus of 3 as resistance
      */
     @Override
     int getResistBonus() {
-        return 0;
+        int cavalry = 3;
+        return cavalry;
     }
 }
