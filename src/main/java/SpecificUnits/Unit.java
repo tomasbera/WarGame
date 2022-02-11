@@ -19,15 +19,21 @@ public abstract class Unit {
      * @param health
      * @param attack damage
      * @param armor protection
-     * @throws Exception if health sett < 0 thr exception
+     * @throws Exception if health sett < 0 thr or name is empty exception
      */
     public Unit(String name, int health, int attack, int armor) throws Exception {
+        if(name.isEmpty()){
+            throw new Exception("Name cannot be blank or nothing");
+        }
         this.name = name;
 
         if(health < 0){
             throw new Exception("Health of a unit cant be less then zero");
         }
         this.health = health;
+
+        //I think that attack and armor can be < 0 because in a war something can go wrong or very well
+        // Eg: a catapult can malfunction, or an units armor can ble less and less efficient
         this.attack = attack;
         this.armor = armor;
     }
@@ -58,7 +64,7 @@ public abstract class Unit {
     }
 
     /**
-     * get method for attacking damage of the unit
+     * get method for attacking damage of this unit
      * @return the damage or DP of this unit
      */
     public int getAttack() {

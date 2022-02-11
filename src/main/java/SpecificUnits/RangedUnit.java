@@ -8,7 +8,7 @@ public class RangedUnit extends Unit {
      * @param health
      * @param attack damage
      * @param armor  protection
-     * @throws Exception if health sett < 0 thr exception
+     * @throws Exception if health sett < 0 or name is empty thr exception
      */
     public RangedUnit(String name, int health, int attack, int armor) throws Exception {
         super(name, health, attack, armor);
