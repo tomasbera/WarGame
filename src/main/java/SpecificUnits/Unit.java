@@ -1,5 +1,7 @@
+package SpecificUnits;
+
 /**
- * Unit class that works as a blueprint for all future specific unitclasses
+ * SpecificUnits.Unit class that works as a blueprint for all future specific unitclasses
  * <p>
  *     has variables as name, health, DP and CP and to abstract methods
  *     which talks about bonus Damage or Armor
@@ -17,7 +19,7 @@ public abstract class Unit {
      * @param health
      * @param attack damage
      * @param armor protection
-     * @throws Exception if health sett <0 thr exception
+     * @throws Exception if health sett < 0 thr exception
      */
     public Unit(String name, int health, int attack, int armor) throws Exception {
         this.name = name;
@@ -93,7 +95,7 @@ public abstract class Unit {
      * <p>
      *     an abstract method which wil be declared,and further used in subclasses
      * </p>
-     * @return armorBonus as an int
+     * @return ResistBonus as an int
      */
     abstract int getResistBonus();
 
