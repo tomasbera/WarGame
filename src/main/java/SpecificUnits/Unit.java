@@ -12,6 +12,8 @@ public abstract class Unit {
     private int health;
     private int attack;
     private int armor;
+    private int melee;
+
 
     /**
      * this is the constructor for all units
@@ -21,21 +23,22 @@ public abstract class Unit {
      * @param armor protection
      * @throws Exception if health sett < 0 thr or name is empty exception
      */
-    public Unit(String name, int health, int attack, int armor) throws Exception {
-        if(name.isEmpty()){
-            throw new Exception("Name cannot be blank or nothing");
+    public Unit(String name, int health, int attack, int armor, int melee) throws Exception {
+        if(name.isBlank()){
+            throw new IllegalArgumentException("Name no blank bad");
         }
         this.name = name;
 
         if(health < 0){
-            throw new Exception("Health of a unit cant be less then zero");
+            throw new IllegalArgumentException("health less zero bad");
         }
         this.health = health;
 
         //I think that attack and armor can be < 0 because in a war something can go wrong or very well
-        // Eg: a catapult can malfunction, or an units armor can ble less and less efficient
+        // Eg: a catapult can malfunction, or a units armor can ble less and less efficient
         this.attack = attack;
         this.armor = armor;
+        this.melee = 2;
     }
 
     /**
@@ -44,6 +47,9 @@ public abstract class Unit {
      */
     public void attack(Unit opponent){
         int newHealth = opponent.health - (this.attack + this.getAttackBonus()) + (opponent.armor + opponent.getResistBonus());
+        if(newHealth > getHealth()){
+            newHealth = getHealth();
+        }
         opponent.setHealth(newHealth);
     }
 
@@ -77,6 +83,14 @@ public abstract class Unit {
      */
     public int getArmor() {
         return armor;
+    }
+
+    /**
+     * get method for when a unit changes to melee combat
+     * @return the bonus of using melee
+     */
+    public int getMelee() {
+        return melee;
     }
 
     /**

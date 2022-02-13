@@ -38,8 +38,9 @@ public class RangedUnit extends Unit {
     }
 
     /**
+     * Range units has an uniq resistantBonus that works as distance between him and his opponent
+     * @return because of this the range unit returns a bonus based on the variable multiplier (distance)
      *
-     * @return
      */
     @Override
     int getResistBonus() {
