@@ -21,9 +21,10 @@ public abstract class Unit {
      * @param health
      * @param attack damage
      * @param armor protection
-     * @throws Exception if health sett < 0 thr or name is empty exception
+     * @param melee this is implemented as all my units will be using this melee variable
+     * @throws IllegalArgumentException if health sett < 0 thr or name is empty exception
      */
-    public Unit(String name, int health, int attack, int armor, int melee) throws Exception {
+    public Unit(String name, int health, int attack, int armor, int melee) throws IllegalArgumentException {
         if(name.isBlank()){
             throw new IllegalArgumentException("Name no blank bad");
         }
@@ -38,7 +39,7 @@ public abstract class Unit {
         // Eg: a catapult can malfunction, or a units armor can ble less and less efficient
         this.attack = attack;
         this.armor = armor;
-        this.melee = 2;
+        this.melee = melee;
     }
 
     /**
@@ -47,10 +48,9 @@ public abstract class Unit {
      */
     public void attack(Unit opponent){
         int newHealth = opponent.health - (this.attack + this.getAttackBonus()) + (opponent.armor + opponent.getResistBonus());
-        if(newHealth > getHealth()){
-            newHealth = getHealth();
+        if(newHealth < opponent.getHealth()){
+            opponent.setHealth(newHealth);
         }
-        opponent.setHealth(newHealth);
     }
 
     /**

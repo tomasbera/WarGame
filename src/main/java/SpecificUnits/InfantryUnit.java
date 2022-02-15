@@ -1,5 +1,8 @@
 package SpecificUnits;
 
+/**
+ * Infantry class that represents all the variables and methods of an infantry unit
+ */
 public class InfantryUnit extends Unit{
 
     /**
@@ -8,9 +11,10 @@ public class InfantryUnit extends Unit{
      * @param health
      * @param attack damage
      * @param armor  protection
-     * @throws Exception if health sett < 0 or name is empty thr exception
+     * @param melee melee damage
+     * @throws IllegalArgumentException if health sett < 0 or name is empty thr exception
      */
-    public InfantryUnit(String name, int health, int attack, int armor, int melee) throws Exception {
+    public InfantryUnit(String name, int health, int attack, int armor, int melee) throws IllegalArgumentException {
         super(name, health, attack, armor, melee);
     }
 
@@ -18,10 +22,10 @@ public class InfantryUnit extends Unit{
      * a constructor with predefined attack and armor
      * @param name
      * @param health
-     * @throws Exception if health sett < 0 thr exception
+     * @throws IllegalArgumentException if health sett < 0 or name is empty thr exception
      */
-    public InfantryUnit(String name, int health) throws Exception {
-        super(name, health, 15, 10, 2);
+    public InfantryUnit(String name, int health) throws IllegalArgumentException {
+        this(name, health, 15, 10, 2);
     }
 
     /**
@@ -30,8 +34,7 @@ public class InfantryUnit extends Unit{
      */
     @Override
     int getAttackBonus() {
-        int meleeBonus = this.getMelee();
-        return meleeBonus;
+        return this.getMelee();
     }
 
     /**
@@ -40,7 +43,6 @@ public class InfantryUnit extends Unit{
      */
     @Override
     int getResistBonus() {
-        int smallArmor = 1;
-        return smallArmor;
+        return 1;
     }
 }

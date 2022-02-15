@@ -1,5 +1,8 @@
 package SpecificUnits;
 
+/**
+ * Cavalry class that represents the cavalry unit with special features
+ */
 public class CavalryUnit extends Unit {
 private boolean firstCharge = true;
     /**
@@ -8,21 +11,23 @@ private boolean firstCharge = true;
      * @param health
      * @param attack damage
      * @param armor  protection
-     * @throws Exception if health sett < 0 thr exception
+     * @param melee melee damage
+     * @throws IllegalArgumentException if health sett < 0 or name is empty thr exception
      */
-    public CavalryUnit(String name, int health, int attack, int armor,int melee) throws Exception {
+    public CavalryUnit(String name, int health, int attack, int armor,int melee) throws IllegalArgumentException {
         super(name, health, attack, armor, melee);
     }
 
     /**
-     * an easier constructor with predefined attack and armor
+     * an easier constructor with predefined attack and armor and melee
      * @param name
      * @param health
-     * @throws Exception if health sett < 0 or name is empty thr exception
+     * @throws IllegalArgumentException if health sett < 0 or name is empty thr exception
      */
-    public CavalryUnit(String name, int health) throws Exception {
-        super(name, health, 20, 12, 2);
+    public CavalryUnit(String name, int health) throws IllegalArgumentException {
+        this(name, health, 20, 12, 2);
     }
+
 
     /**
      *this method represents the attackBonuses of a cavalry unit
@@ -37,10 +42,8 @@ private boolean firstCharge = true;
            firstCharge = false;
            return this.getMelee() + charge;
        }
-       else{
-           return this.getMelee();
-       }
 
+       return this.getMelee();
     }
 
     /**

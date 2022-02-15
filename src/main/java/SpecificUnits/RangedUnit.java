@@ -1,6 +1,11 @@
 package SpecificUnits;
+
+/**
+ * Range class that represents all the variables and methods of a ranger unit
+ */
 public class RangedUnit extends Unit {
-    private int distance = 0;
+    private int distanceDamage = 0;
+    private int distanceResist = 0;
 
     /**
      * this is the constructor for all units
@@ -8,9 +13,10 @@ public class RangedUnit extends Unit {
      * @param health
      * @param attack damage
      * @param armor  protection
-     * @throws Exception if health sett < 0 or name is empty thr exception
+     * @param melee melee damage
+     * @throws IllegalArgumentException if health sett < 0 or name is empty thr exception
      */
-    public RangedUnit(String name, int health, int attack, int armor, int melee) throws Exception {
+    public RangedUnit(String name, int health, int attack, int armor, int melee) throws IllegalArgumentException {
         super(name, health, attack, armor, melee);
     }
 
@@ -18,10 +24,10 @@ public class RangedUnit extends Unit {
      * an easier constructor with predefined attack and armor
      * @param name
      * @param health
-     * @throws Exception if health sett < 0 thr exception
+     * @throws IllegalArgumentException if health sett < 0 or name is empty thr exception
      */
-    public RangedUnit(String name, int health) throws Exception {
-        super(name, health, 15, 8, 2);
+    public RangedUnit(String name, int health) throws IllegalArgumentException {
+        this(name, health, 15, 8, 2);
     }
 
     /**
@@ -30,25 +36,24 @@ public class RangedUnit extends Unit {
      */
     @Override
     int getAttackBonus() {
-        int range = 3;
-        if(distance == 3){
+        if(distanceDamage >= 3){
             return this.getMelee();
         }
-        return range;
+        distanceDamage++;
+        return 3;
     }
 
     /**
      * Range units has an uniq resistantBonus that works as distance between him and his opponent
      * @return because of this the range unit returns a bonus based on the variable multiplier (distance)
-     *
      */
     @Override
     int getResistBonus() {
-        int damageDistance = 6 - 2 * distance;
-        if(damageDistance <= 2){
-            damageDistance = 2;
+        int resistBonus = 6 - 2 * distanceResist;
+        if(resistBonus <= 2){
+            resistBonus = 2;
         }
-        distance ++;
-        return damageDistance;
+        distanceResist++;
+        return resistBonus;
     }
 }

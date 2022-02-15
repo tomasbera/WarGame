@@ -1,5 +1,8 @@
 package SpecificUnits;
 
+/**
+ *  Commander class that represents all the variables and methods of a commander unit
+ */
 public class CommanderUnit extends CavalryUnit{
 
     /**
@@ -8,9 +11,10 @@ public class CommanderUnit extends CavalryUnit{
      * @param health
      * @param attack damage
      * @param armor  protection
-     * @throws Exception if health sett < 0 or name is empty thr exception
+     * @param melee melee damage
+     * @throws IllegalArgumentException if health sett < 0 or name is empty thr exception
      */
-    public CommanderUnit(String name, int health, int attack, int armor, int melee) throws Exception {
+    public CommanderUnit(String name, int health, int attack, int armor, int melee) throws IllegalArgumentException {
         super(name, health, attack, armor, melee);
     }
 
@@ -18,10 +22,10 @@ public class CommanderUnit extends CavalryUnit{
      * an easier constructor with predefined attack and armor
      * @param name
      * @param health
-     * @throws Exception if health sett < 0 thr exception
+     * @throws IllegalArgumentException if health sett < 0 or name is empty thr exception
      */
-    public CommanderUnit(String name, int health) throws Exception {
-        super(name, health, 25, 15, 2);
+    public CommanderUnit(String name, int health) throws IllegalArgumentException {
+        this(name, health, 25, 15, 2);
     }
 
     /**
