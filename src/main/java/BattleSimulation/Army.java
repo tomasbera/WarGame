@@ -15,10 +15,9 @@ public class Army {
 
     /**
      * A constructor with a list, and the name of that list
-     * @param units list of an army
      * @param name same of the army
      */
-    public Army(List<Unit> units, String name) {
+    public Army(String name) {
         units = new ArrayList<Unit>();
         this.name = name;
     }
@@ -80,8 +79,16 @@ public class Army {
      */
     public Unit getRandom(){
         java.util.Random random = new java.util.Random();
-        int randomNum = random.nextInt();
+        int randomNum = random.nextInt(units.size());
         return units.get(randomNum);
+    }
+
+    /**
+     * this is a getmethod for getting the list of all units in an army
+     * @return list of unit in the army
+     */
+    public List<Unit> getUnits() {
+        return units;
     }
 
     /**

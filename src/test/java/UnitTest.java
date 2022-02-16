@@ -19,7 +19,7 @@ public class UnitTest{
     }
 
     @Test
-    public void TestExceptionThrownIfHealthIsLessThanZero() throws Exception {
+    public void TestExceptionThrownIfHealthIsLessThanZero() {
         try {
             Unit unit = new InfantryUnit("Knights", -1);
 
