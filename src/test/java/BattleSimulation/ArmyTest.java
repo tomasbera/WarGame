@@ -86,8 +86,9 @@ class ArmyTest {
 
         listTest.add(infantryTest);
         listTest.add(RangeTest);
+        armyTest.addAll(listTest);
 
-        //assertEquals(, armyTest.getAllUnits());
+        assertEquals(2, armyTest.getAllUnits().size());
 
     }
 
@@ -107,7 +108,8 @@ class ArmyTest {
 
         armies.addAll(listTest);
 
-        System.out.println(armies.getRandom());
+        assertNotNull(armies.getRandom());
+
     }
 
     @Test

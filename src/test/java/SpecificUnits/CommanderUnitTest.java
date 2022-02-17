@@ -7,12 +7,32 @@ import static org.junit.jupiter.api.Assertions.*;
 class CommanderUnitTest {
     @Test
     void attack() {
-        Unit test1 = new CommanderUnit("Commander",10,1,1,2);
-        Unit test2 = new InfantryUnit("Knight",10,1,1,1);
+        Unit test1 = new Unit("Commander", 0, 1, 0, 0) {
+            @Override
+            int getAttackBonus() {
+                return 0;
+            }
+
+            @Override
+            int getResistBonus() {
+                return 0;
+            }
+        };
+        Unit test2 = new Unit("Knight", 10, 0, 0, 0) {
+            @Override
+            int getAttackBonus() {
+                return 0;
+            }
+
+            @Override
+            int getResistBonus() {
+                return 0;
+            }
+        };
 
         test1.attack(test2);
 
-        assertEquals(6, test2.getHealth());
+        assertEquals(9, test2.getHealth());
     }
 
     @Test

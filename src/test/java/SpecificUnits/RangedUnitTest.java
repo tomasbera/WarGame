@@ -8,12 +8,32 @@ class RangedUnitTest {
 
     @Test
     void attack() {
-        Unit test1 = new RangedUnit("Bowman",10,1,1,1);
-        Unit test2 = new InfantryUnit("Knight",10,1,1,1);
+        Unit test1 = new Unit("Bowman", 10, 1, 0, 0) {
+            @Override
+            int getAttackBonus() {
+                return 0;
+            }
+
+            @Override
+            int getResistBonus() {
+                return 0;
+            }
+        };
+        Unit test2 = new Unit("Knight", 10, 0, 0, 0) {
+            @Override
+            int getAttackBonus() {
+                return 0;
+            }
+
+            @Override
+            int getResistBonus() {
+                return 0;
+            }
+        };
 
         test1.attack(test2);
 
-        assertEquals(8, test2.getHealth());
+        assertEquals(9, test2.getHealth());
     }
 
     @Test
