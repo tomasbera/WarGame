@@ -2,6 +2,11 @@ package BattleSimulation;
 import SpecificUnits.Unit;
 import java.util.Random;
 
+/**
+ * this class represents the simulation of a battle
+ * the battle is going to be between two armies from the army class
+ * this class consists of different methods and variables
+ */
 public class Battle {
 
     Army attackingArmy;
@@ -9,11 +14,20 @@ public class Battle {
     Army armyOne;
     Army armyTwo;
 
+    /**
+     * this is a construcrot for the battle class that takes two classes.
+     * @param armyOne
+     * @param armyTwo
+     */
     public Battle(Army armyOne, Army armyTwo) {
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
     }
 
+    /**
+     * this method is the simulation of the battle, two armies attack each other, and one wins
+     * @return return the winning army as an Army object
+     */
     public Army simulate(){
         Army winningArmy;
         boolean winner = false;
@@ -45,6 +59,9 @@ public class Battle {
         return winningArmy;
     }
 
+    /**
+     * this method chooses the starting/attacking and defending army
+     */
     public void whoStarts(){
         Random random = new Random();
         int upperbound = 11;
@@ -59,11 +76,13 @@ public class Battle {
         }
     }
 
+    /**
+     * the toString method that print out both armies
+     * @return both armies units
+     */
     @Override
     public String toString() {
-        return "Battle{" +
-                "armyOne=" + armyOne +
-                "\n\narmyTwo=" + armyTwo +
-                '}';
+        return armyOne.getName() +"\n"+ armyOne.getAllUnits() +
+                "\n\n" + armyTwo.getName() +"\n"+ armyTwo.getAllUnits();
     }
 }
