@@ -1,0 +1,6 @@
+SpecificUnits\InfantryUnit.class
+SpecificUnits\CavalryUnit.class
+SpecificUnits\RangedUnit.class
+SpecificUnits\Unit.class
+SpecificUnits\CommanderUnit.class
+BattleSimulation\Army.class

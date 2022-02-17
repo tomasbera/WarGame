@@ -1,0 +1,6 @@
+SpecificUnits\CommanderUnitTest.class
+BattleSimulation\ArmyTest.class
+SpecificUnits\CavalryUnitTest.class
+SpecificUnits\InfantryUnitTest.class
+UnitTest.class
+SpecificUnits\RangedUnitTest.class
