@@ -25,6 +25,7 @@ public class GameHub {
                                     "Register new Unit",
                                     "Register new Army",
                                     "Add all units",
+                                    "Multiply unit count",
                                     "Remove all units registered",
                                     "Run simulation",
                                     "See all Units of a Army",
@@ -33,10 +34,11 @@ public class GameHub {
                     final int REGISTER_NEW = 0;
                     final int REGISTER_ARMY = 1;
                     final int ADD_ALL = 2;
-                    final int REMOVE_ALL = 3;
-                    final int RUN_SIMULATION = 4;
-                    final int SHOW_ALL_UNITS = 5;
-                    final int EXIT = 6;
+                    final int MULTIPY_UNIT = 3;
+                    final int REMOVE_ALL = 4;
+                    final int RUN_SIMULATION = 5;
+                    final int SHOW_ALL_UNITS = 6;
+                    final int EXIT = 7;
 
                     int menuSelection = showOptionDialog(null, "****WarGames****" + "\n Choose function",
                             "Project Idatt2001", YES_NO_OPTION, INFORMATION_MESSAGE, null, menuInput, menuInput[0]);
@@ -50,6 +52,9 @@ public class GameHub {
                         }
                         case ADD_ALL -> {
                             ADDALL();
+                        }
+                        case MULTIPY_UNIT -> {
+                            MULTIPYUNIT();
                         }
                         case REMOVE_ALL -> {
                             REMOVEALL();
@@ -122,6 +127,19 @@ public class GameHub {
                     a.addAll(unitList);
                 }
             }
+        }
+
+        private static void MULTIPYUNIT() {
+        String nameMultiple = showInputDialog("What is the name of unit you want to multiple");
+        String howManyTimes = showInputDialog("How many do you want");
+        int multipleNum = Integer.parseInt(howManyTimes);
+        for (Unit u : unitList){
+            if (Objects.equals(u.getName(), nameMultiple)){
+                for (int i = 0; i <= multipleNum; i++) {
+                    unitList.add(u);
+                }
+            }
+        }
         }
 
         private static void REMOVEALL() {
