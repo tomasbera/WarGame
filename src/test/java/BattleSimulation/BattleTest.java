@@ -13,7 +13,7 @@ class BattleTest {
     void simulate() {
         Army armyTest1 = new Army("A");
         Army armyTest2 = new Army("B");
-        Battle battle = new Battle(armyTest1, armyTest2);
+        Battle battleTest = new Battle(armyTest1, armyTest2);
 
         List<Unit> listTest1 = new ArrayList<>();
         Unit infantryTest1 = new InfantryUnit("Knight", 10);
@@ -36,22 +36,10 @@ class BattleTest {
 
         armyTest1.addAll(listTest1);
         armyTest2.addAll(listTest2);
-        battle.whoStarts();
 
-        System.out.println(battle.simulate().toString());
+        String result = battleTest.simulate().toString();
+        System.out.println(result);
 
-
-    }
-
-    @Test
-    void whoStarts() {
-        Army test1 = new Army("A");
-        Army test2 = new Army("B");
-        Battle battle = new Battle(test1, test2);
-        battle.whoStarts();
-
-        assertNotNull(battle.attackingArmy);
-        assertNotNull(battle.defendingArmy);
 
     }
 

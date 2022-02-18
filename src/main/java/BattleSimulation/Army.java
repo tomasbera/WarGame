@@ -59,7 +59,7 @@ public class Army {
      * @return true if the list is empty, false if it has units
      */
     public boolean hasUnits(){
-        if(units.size()==0){
+        if(units.size() > 0){
             return true;
         }
         return false;

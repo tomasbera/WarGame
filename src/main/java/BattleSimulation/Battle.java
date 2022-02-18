@@ -30,23 +30,37 @@ public class Battle {
      */
     public Army simulate(){
         Army winningArmy;
-        boolean winner = false;
 
-        while (armyTwo.hasUnits() && armyTwo.hasUnits()){
+        Random random = new Random();
+        boolean randomBool = random.nextBoolean();
+
+        if (randomBool){
+            attackingArmy = armyOne;
+            defendingArmy = armyTwo;
+        } else {
+            attackingArmy = armyTwo;
+            defendingArmy = armyOne;
+        }
+
+        boolean winner;
+        while (armyOne.hasUnits() && armyTwo.hasUnits()){
+
             Unit attackingUnit = attackingArmy.getRandom();
             Unit defendingUnit = defendingArmy.getRandom();
 
+            winner = false;
             while (!winner){
                 attackingUnit.attack(defendingUnit);
-                if (defendingUnit.getHealth() == 0){
+                if (defendingUnit.getHealth() <= 0){
                     defendingArmy.remove(defendingUnit);
                     winner = true;
                 }
-
-                defendingUnit.attack(attackingUnit);
-                if (attackingUnit.getHealth() == 0){
-                    attackingArmy.remove(attackingUnit);
-                    winner = true;
+                else {
+                    defendingUnit.attack(attackingUnit);
+                    if (attackingUnit.getHealth() <= 0){
+                        attackingArmy.remove(attackingUnit);
+                        winner = true;
+                    }
                 }
             }
         }
@@ -55,7 +69,6 @@ public class Battle {
         } else {
             winningArmy = armyTwo;
         }
-
         return winningArmy;
     }
 
@@ -63,17 +76,6 @@ public class Battle {
      * this method chooses the starting/attacking and defending army
      */
     public void whoStarts(){
-        Random random = new Random();
-        int upperbound = 11;
-        int randomNum = random.nextInt(upperbound);
-
-        if (randomNum<5){
-            attackingArmy = armyOne;
-            defendingArmy = armyTwo;
-        } else {
-            attackingArmy = armyTwo;
-            defendingArmy = armyOne;
-        }
     }
 
     /**
