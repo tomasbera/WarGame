@@ -35,7 +35,7 @@ public class RangedUnit extends Unit {
      * @return because this unit is range, this unit gets +3 as AttackBonus
      */
     @Override
-    int getAttackBonus() {
+     int getAttackBonus() {
         if(distanceDamage >= 3){
             return this.getMelee();
         }

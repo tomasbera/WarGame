@@ -15,7 +15,7 @@ public class Battle {
     Army armyTwo;
 
     /**
-     * this is a construcrot for the battle class that takes two classes.
+     * this is a constructor for the battle class that takes two classes.
      * @param armyOne
      * @param armyTwo
      */

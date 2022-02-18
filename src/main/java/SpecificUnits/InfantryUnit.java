@@ -33,7 +33,7 @@ public class InfantryUnit extends Unit{
      * @return which means that it gets a +2 as a AttackBonus
      */
     @Override
-    int getAttackBonus() {
+     int getAttackBonus() {
         return this.getMelee();
     }
 

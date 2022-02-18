@@ -36,7 +36,7 @@ private boolean firstCharge = true;
      * @return ether +5 or +2 as a attackBonus, depends on the firstCharge bonus
      */
     @Override
-    int getAttackBonus() {
+     int getAttackBonus() {
         int charge = 3;
        if(firstCharge){
            firstCharge = false;

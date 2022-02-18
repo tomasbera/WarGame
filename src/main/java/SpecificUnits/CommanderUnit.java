@@ -35,7 +35,7 @@ public class CommanderUnit extends CavalryUnit{
      * @return ether +5 or +2 as a attackBonus, depends on the firstCharge bonus
      */
     @Override
-    int getAttackBonus() {
+     int getAttackBonus() {
         return super.getAttackBonus();
     }
 

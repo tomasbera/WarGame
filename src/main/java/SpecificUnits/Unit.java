@@ -108,7 +108,7 @@ public abstract class Unit {
      * </p>
      * @return attackBonus as an int
      */
-    abstract int getAttackBonus();
+     abstract int getAttackBonus();
 
     /**
      * an abstract method for showing an armor bonus
@@ -117,7 +117,7 @@ public abstract class Unit {
      * </p>
      * @return ResistBonus as an int
      */
-    abstract int getResistBonus();
+     abstract int getResistBonus();
 
 
     /**
