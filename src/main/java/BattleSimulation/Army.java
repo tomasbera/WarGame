@@ -124,9 +124,7 @@ public class Army {
      */
     @Override
     public String toString() {
-        return "Army{" +
-                "units=" + units +
-                ", name='" + name + '\'' +
-                '}';
+        return name +
+                "\nunits=" + units;
     }
 }

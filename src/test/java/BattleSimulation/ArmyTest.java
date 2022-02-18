@@ -146,6 +146,6 @@ class ArmyTest {
         String testName1 = "Human Army";
         Army armyTest1 = new Army(testName1);
 
-        assertEquals("Army{units=[], name='Human Army'}", armyTest1.toString());
+        assertEquals("Human Army\nunits=[]", armyTest1.toString());
     }
 }
