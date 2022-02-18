@@ -76,7 +76,7 @@ class CavalryUnitTest {
     @Test
     void testToString() {
         Unit test = new CavalryUnit("Rider",1,2,3,4);
-        assertEquals("\n"+ """
+        assertEquals("\n\n"+ """
                 The statistics of unit:\s
                 Rider
                 Health:

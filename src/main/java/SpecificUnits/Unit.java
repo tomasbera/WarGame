@@ -126,7 +126,7 @@ public abstract class Unit {
      */
     @Override
     public String toString() {
-        return "\nThe statistics of unit: \n" +name+
+        return "\n\nThe statistics of unit: \n" +name+
                 "\nHealth:\n" + health+
                 "\nDamage/DP:\n" + attack+
                 "\nArmor/AP \n" + armor;

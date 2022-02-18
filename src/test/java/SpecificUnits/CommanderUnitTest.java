@@ -75,7 +75,7 @@ class CommanderUnitTest {
     @Test
     void testToString() {
         Unit test = new CommanderUnit("Commander",1,2,3,4);
-        assertEquals("\n"+ """
+        assertEquals("\n\n"+ """
                 The statistics of unit:\s
                 Commander
                 Health:

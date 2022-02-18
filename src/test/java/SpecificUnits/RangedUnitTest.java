@@ -76,7 +76,7 @@ class RangedUnitTest {
     @Test
     void testToString() {
         Unit test = new RangedUnit("Bowmen",1,2,3,4);
-        assertEquals("\n"+ """
+        assertEquals("\n\n"+ """
                 The statistics of unit:\s
                 Bowmen
                 Health:

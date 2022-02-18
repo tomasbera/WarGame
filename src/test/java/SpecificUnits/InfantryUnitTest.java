@@ -76,7 +76,7 @@ class InfantryUnitTest {
     @Test
     void testToString() {
         Unit test = new InfantryUnit("knight",1,2,3,4);
-        assertEquals("\n"+ """
+        assertEquals("\n\n"+ """
                 The statistics of unit:\s
                 knight
                 Health:
