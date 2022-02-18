@@ -24,10 +24,11 @@ class BattleTest {
         listTest1.add(RangeTest1);
         listTest1.add(CavalryTest1);
 
+
         List<Unit> listTest2 = new ArrayList<>();
         Unit infantryTest2 = new InfantryUnit("Orc", 10);
         Unit RangeTest2 = new RangedUnit("Orc crossbow", 10);
-        Unit CavalryTest2 = new CavalryUnit("Wolf rider", 10);
+        Unit CavalryTest2 = new CavalryUnit("Wolf Rider", 10);
 
         listTest2.add(infantryTest2);
         listTest2.add(RangeTest2);

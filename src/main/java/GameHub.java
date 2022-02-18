@@ -38,7 +38,7 @@ public class GameHub {
                                     "Multiply unit count",
                                     "Remove all units registered",
                                     "Run simulation",
-                                    "See all Units of a Army",
+                                    "See all Units",
                                     "End Game",
                             };
                     final int REGISTER_NEW = 0;
@@ -148,20 +148,60 @@ public class GameHub {
             }
 
         /**
-         * method for multiplying a unit
+         * method for multiplying a specific unit based on type
          */
         private static void MULTIPYUNIT() {
+            String typeRead = showInputDialog("what type of unit is it\n" +
+                    "1. Infantry" +
+                    "\n2. Range" +
+                    "\n3. Cavalry" +
+                    "\n4. Commander");
+            int type = Integer.parseInt(typeRead);
+
             String nameMultiple = showInputDialog("What is the name of unit you want to multiple");
             String howManyTimes = showInputDialog("How many do you want");
             int multipleNum = Integer.parseInt(howManyTimes);
-            for (Unit u : unitList){
-                if (Objects.equals(u.getName(), nameMultiple)){
-                    for (int i = 0; i <= multipleNum; i++) {
-                        unitList.add(u);
+
+            if (type == 1) {
+                for (Unit inf : unitList) {
+                    if (Objects.equals(inf.getName(), nameMultiple)) {
+                        for (int i = 0; i <= multipleNum; i++) {
+                            unitList.add(new InfantryUnit(inf.getName(), inf.getHealth(), inf.getAttack(), inf.getArmor(), inf.getMelee()));
+                        }
                     }
                 }
             }
+
+            else if (type == 2){
+                for (Unit rng: unitList) {
+                    if (Objects.equals(rng.getName(), nameMultiple)){
+                        for (int i = 0; i <= multipleNum; i++) {
+                            unitList.add(new RangedUnit(rng.getName(), rng.getHealth(), rng.getAttack(), rng.getArmor(), rng.getMelee()));
+                        }
+                    }
+                }
             }
+
+            else if (type == 3){
+                for (Unit cav : unitList){
+                    if (Objects.equals(cav.getName(), nameMultiple)){
+                        for (int i = 0; i <= multipleNum; i++) {
+                            unitList.add(new CavalryUnit(cav.getName(), cav.getHealth(), cav.getAttack(), cav.getArmor(), cav.getMelee()));
+                        }
+                    }
+                }
+            }
+
+            else if (type == 4){
+                for (Unit com : unitList){
+                    if (Objects.equals(com.getName(), nameMultiple)){
+                        for (int i = 0; i <= multipleNum; i++) {
+                            unitList.add(new CommanderUnit(com.getName(), com.getHealth(), com.getAttack(), com.getArmor(), com.getMelee()));
+                        }
+                    }
+                }
+            }
+        }
 
         /**
          * remove all units in the list, so you can make a new army
@@ -183,6 +223,6 @@ public class GameHub {
          * shows all units registered
          */
         private static void SHOWALLUNITS() {
-                System.out.println(armyList);
+                System.out.println(unitList);
             }
         }
