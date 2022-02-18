@@ -69,10 +69,10 @@ class ArmyTest {
         Army armyTest1 = new Army(testName1);
         Unit testUnit = new InfantryUnit("Knight", 10);
 
-        assertTrue(armyTest1.hasUnits());
+        assertFalse(armyTest1.hasUnits());
 
         armyTest1.add(testUnit);
-        assertFalse(armyTest1.hasUnits());
+        assertTrue(armyTest1.hasUnits());
     }
 
     @Test

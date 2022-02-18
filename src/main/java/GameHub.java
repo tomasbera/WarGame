@@ -2,6 +2,7 @@ import SpecificUnits.*;
 import BattleSimulation.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static javax.swing.JOptionPane.*;
 public class GameHub {
@@ -24,6 +25,7 @@ public class GameHub {
                                     "Register new Unit",
                                     "Register new Army",
                                     "Add all units",
+                                    "Remove all units registered",
                                     "Run simulation",
                                     "See all Units of a Army",
                                     "End Game",
@@ -31,9 +33,10 @@ public class GameHub {
                     final int REGISTER_NEW = 0;
                     final int REGISTER_ARMY = 1;
                     final int ADD_ALL = 2;
-                    final int RUN_SIMULATION = 3;
-                    final int SHOW_ALL_UNITS = 4;
-                    final int EXIT = 5;
+                    final int REMOVE_ALL = 3;
+                    final int RUN_SIMULATION = 4;
+                    final int SHOW_ALL_UNITS = 5;
+                    final int EXIT = 6;
 
                     int menuSelection = showOptionDialog(null, "****WarGames****" + "\n Choose function",
                             "Project Idatt2001", YES_NO_OPTION, INFORMATION_MESSAGE, null, menuInput, menuInput[0]);
@@ -47,6 +50,9 @@ public class GameHub {
                         }
                         case ADD_ALL -> {
                             ADDALL();
+                        }
+                        case REMOVE_ALL -> {
+                            REMOVEALL();
                         }
                         case RUN_SIMULATION -> {
                             RUNSIMULATION();
@@ -88,7 +94,16 @@ public class GameHub {
             int newMelee = Integer.parseInt(newMeleeRead);
 
             if (type == 1){
-
+                unitList.add(new InfantryUnit(newName, newHealth, newDamage, newArmor, newMelee));
+            }
+            else if(type == 2){
+                unitList.add(new RangedUnit(newName, newHealth, newDamage, newArmor, newMelee));
+            }
+            else if(type == 3){
+                unitList.add(new CavalryUnit(newName, newHealth, newDamage, newArmor, newMelee));
+            }
+            else if(type == 4){
+                unitList.add(new CommanderUnit(newName, newHealth, newDamage, newArmor, newMelee));
             }
 
         }
@@ -101,15 +116,25 @@ public class GameHub {
         }
 
         private static void ADDALL() {
+        String armyName = showInputDialog("what is the name of the army you want to add all these units to");
+            for (Army a:armyList) {
+                if(Objects.equals(a.getName(), armyName)){
+                    a.addAll(unitList);
+                }
+            }
         }
 
+        private static void REMOVEALL() {
+        unitList.clear();
+        }
 
         private static void RUNSIMULATION() {
-            Battle battle = new Battle(army1, army2);
+            Battle battle = new Battle(armyList.get(0), armyList.get(1));
             System.out.println(battle.simulate());
         }
 
 
         private static void SHOWALLUNITS() {
+            System.out.println(armyList);
         }
     }
