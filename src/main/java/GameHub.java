@@ -3,19 +3,29 @@ import BattleSimulation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 import static javax.swing.JOptionPane.*;
+
+/**
+ * this is the client for my warGame
+ */
 public class GameHub {
 
     public static List<Unit> unitList = new ArrayList<>();
     public static List<Army> armyList = new ArrayList<>();
 
+    /**
+     * the main method that starts the game
+     * @param args
+     */
     public static void main(String[] args) {
             start();
         }
 
     public static boolean finished = true;
 
+    /**
+     * the start f the game, where you can choose what you want to do in the game
+     */
     public static void start() {
         List<Army> armyList = new ArrayList<>();
             while(finished){
@@ -81,7 +91,10 @@ public class GameHub {
             }
         }
 
-        private static void REGISTERNEW() {
+    /**
+     * method where you register new units
+     */
+    private static void REGISTERNEW() {
             String typeRead = showInputDialog("what type of unit is it\n" +
                     "1. Infantry" +
                     "\n2. Range" +
@@ -113,46 +126,63 @@ public class GameHub {
 
         }
 
-
+        /**
+         * method for registering new army
+         */
         private static void REGISTERARMY() {
             String newName = showInputDialog("Write the name of the army");
             Army army = new Army(newName);
             armyList.add(army);
         }
 
+        /**
+         * method for adding all units to an army
+         */
         private static void ADDALL() {
-        String armyName = showInputDialog("what is the name of the army you want to add all these units to");
-            for (Army a:armyList) {
-                if(Objects.equals(a.getName(), armyName)){
-                    a.addAll(unitList);
+            String armyName = showInputDialog("what is the name of the army you want to add all these units to");
+                for (Army a:armyList) {
+                    if(Objects.equals(a.getName(), armyName)){
+                        a.addAll(unitList);
+                    }
                 }
             }
-        }
 
+        /**
+         * method for multiplying a unit
+         */
         private static void MULTIPYUNIT() {
-        String nameMultiple = showInputDialog("What is the name of unit you want to multiple");
-        String howManyTimes = showInputDialog("How many do you want");
-        int multipleNum = Integer.parseInt(howManyTimes);
-        for (Unit u : unitList){
-            if (Objects.equals(u.getName(), nameMultiple)){
-                for (int i = 0; i <= multipleNum; i++) {
-                    unitList.add(u);
+            String nameMultiple = showInputDialog("What is the name of unit you want to multiple");
+            String howManyTimes = showInputDialog("How many do you want");
+            int multipleNum = Integer.parseInt(howManyTimes);
+            for (Unit u : unitList){
+                if (Objects.equals(u.getName(), nameMultiple)){
+                    for (int i = 0; i <= multipleNum; i++) {
+                        unitList.add(u);
+                    }
                 }
             }
-        }
-        }
+            }
 
+        /**
+         * remove all units in the list, so you can make a new army
+         */
         private static void REMOVEALL() {
-        unitList.clear();
-        }
+            unitList.clear();
+            }
 
+        /**
+         * mathod that runs the simulation of the battle
+         */
         private static void RUNSIMULATION() {
-            Battle battle = new Battle(armyList.get(0), armyList.get(1));
-            System.out.println(battle.simulate());
-        }
+                Battle battle = new Battle(armyList.get(0), armyList.get(1));
+                System.out.println(battle.simulate());
+            }
 
 
+        /**
+         * shows all units registered
+         */
         private static void SHOWALLUNITS() {
-            System.out.println(armyList);
+                System.out.println(armyList);
+            }
         }
-    }
