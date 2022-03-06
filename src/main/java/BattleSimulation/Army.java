@@ -15,11 +15,21 @@ public class Army {
 
     /**
      * A constructor with a list, and the name of that list
-     * @param name same of the army
+     * @param name army name
      */
     public Army(String name) {
         units = new ArrayList<>();
         this.name = name;
+    }
+
+    /**
+     * A constructor created with a list and a name of the army object created
+     * @param name name of army
+     * @param units list of units
+     */
+    public Army(String name, List<Unit> units){
+        this.name = name;
+        this.units = units;
     }
 
     /**

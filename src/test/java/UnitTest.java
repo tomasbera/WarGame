@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UnitTest{
 
     @Test
-    public void TestExceptionThrownIfNameIsBlank() {
+    public void Test_Exception_Thrown_IfName_Is_Blank() {
         try {
             Unit unit = new InfantryUnit("", 12);
             fail("This constructor should throw an IllegalArgumentException");
@@ -19,7 +19,7 @@ public class UnitTest{
     }
 
     @Test
-    public void TestExceptionThrownIfHealthIsLessThanZero() {
+    public void Test_Exception_Thrown_If_Health_Is_Less_Than_Zero() {
         try {
             Unit unit = new InfantryUnit("Knights", -1);
 

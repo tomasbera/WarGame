@@ -175,7 +175,7 @@ public class GameHub {
             else if (type == 2){
                 for (Unit rng: unitList) {
                     if (Objects.equals(rng.getName(), nameMultiple)){
-                        for (int i = 0; i <= multipleNum; i++) {
+                        for (int i = 0; i < multipleNum; i++) {
                             unitList.add(new RangedUnit(rng.getName(), rng.getHealth(), rng.getAttack(), rng.getArmor(), rng.getMelee()));
                         }
                     }

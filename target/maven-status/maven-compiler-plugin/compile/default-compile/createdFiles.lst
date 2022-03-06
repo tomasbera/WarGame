@@ -3,5 +3,6 @@ BattleSimulation\Army.class
 BattleSimulation\Battle.class
 SpecificUnits\CavalryUnit.class
 SpecificUnits\RangedUnit.class
+GameHub.class
 SpecificUnits\Unit.class
 SpecificUnits\CommanderUnit.class
