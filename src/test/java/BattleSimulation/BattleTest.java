@@ -40,8 +40,6 @@ class BattleTest {
 
         String result = battleTest.simulate().toString();
         System.out.println(result);
-
-
     }
 
     @Test
