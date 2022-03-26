@@ -1,9 +1,10 @@
 package BattleSimulation;
-import SpecificUnits.Unit;
+import SpecificUnits.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Class representing a full army, with different methods for handling the mechanics of an army
@@ -100,6 +101,47 @@ public class Army {
     public List<Unit> getUnits() {
         return units;
     }
+
+    /**
+     * methods for getting all infantryUnits in a army
+     * @return a new list of all infantryUnits
+     */
+    public List<Unit> getInfantryUnits(){
+        return getUnits().stream()
+                .filter(u -> u instanceof InfantryUnit)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    /**
+     * methods for getting all RangeUnitsUnits in a army
+     * @return a new list of all RangeUnits
+     */
+    public List<Unit> getRangeUnits(){
+        return getUnits().stream()
+                .filter(u -> u instanceof RangedUnit)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    /**
+     * methods for getting all CavalryUnits in a army
+     * @return a new list of all CavalryUnits
+     */
+    public List<Unit> getCavalryUnits(){
+        return getUnits().stream()
+                .filter(u -> u instanceof CavalryUnit && !(u instanceof CommanderUnit))
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    /**
+     * methods for getting all CommanderUnits in a army
+     * @return a new list of all CommanderUnits
+     */
+    public List<Unit> getCommanderUnits(){
+        return getUnits().stream()
+                .filter(u -> u instanceof CommanderUnit)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
+
 
     /**
      * if a object is the same as a different unit

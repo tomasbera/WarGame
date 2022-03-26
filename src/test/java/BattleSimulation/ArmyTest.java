@@ -1,6 +1,8 @@
 package BattleSimulation;
 
 import SpecificUnits.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,12 +11,45 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ArmyTest {
 
+    public Army armyTest;
+
+    @BeforeEach
+    void Initiate_army_with_units(){
+        String testName = "Human Army";
+        armyTest = new Army(testName);
+
+        List<Unit> listTest = new ArrayList<>();
+        Unit infantryTest = new InfantryUnit("Knight", 10);
+        Unit RangeTest = new RangedUnit("Bowmen", 10);
+        Unit CavalryTest = new CavalryUnit("Rider", 10);
+        Unit CommanderUnit = new CommanderUnit("Commander", 10);
+
+        listTest.add(infantryTest);
+        listTest.add(RangeTest);
+        listTest.add(CavalryTest);
+        listTest.add(CommanderUnit);
+
+        armyTest.addAll(listTest);
+
+    }
+
+    @Test
+    void Test_if_constructor_Works_as_expected(){
+        Army armyTest = new Army("Human Army");
+        assertEquals("Human Army", armyTest.getName());
+    }
+
+    @Test
+    void Test_to_see_if_other_constructor_also_works(){
+        ArrayList<Unit> unitList = new ArrayList<>();
+        unitList.add(new InfantryUnit("name",1,1,1,1));
+        Army armyTest = new Army("Human Army", unitList);
+        assertEquals(unitList.get(0), armyTest.getUnits().get(0));
+    }
+
     @Test
     void getName() {
-        String testName = "Human Army";
-        Army armies = new Army(testName);
-
-        assertEquals("Human Army", armies.getName());
+        assertEquals("Human Army", armyTest.getName());
     }
 
     @Test
@@ -26,27 +61,11 @@ class ArmyTest {
         armies.add(infantryTest);
 
         assertEquals(infantryTest,armies.getUnits().get(0));
-
     }
 
     @Test
     void addAll() {
-        String testName = "Human Army";
-        Army armies = new Army(testName);
-
-        List<Unit> listTest = new ArrayList<>();
-        Unit infantryTest = new InfantryUnit("Knight", 10);
-        Unit RangeTest = new RangedUnit("Bowmen", 10);
-        Unit CavalryTest = new CavalryUnit("Rider", 10);
-
-        listTest.add(infantryTest);
-        listTest.add(RangeTest);
-        listTest.add(CavalryTest);
-
-        armies.addAll(listTest);
-
-        assertEquals(3, armies.getUnits().size());
-
+        assertEquals(3, armyTest.getUnits().size());
     }
 
     @Test
@@ -65,51 +84,46 @@ class ArmyTest {
 
     @Test
     void hasUnits() {
-        String testName1 = "Human Army";
-        Army armyTest1 = new Army(testName1);
-        Unit testUnit = new InfantryUnit("Knight", 10);
-
-        assertFalse(armyTest1.hasUnits());
-
-        armyTest1.add(testUnit);
-        assertTrue(armyTest1.hasUnits());
+        assertTrue(armyTest.hasUnits());
     }
 
     @Test
     void getAllUnits() {
-        String testName = "Human Army";
-        Army armyTest = new Army(testName);
-
-        List<Unit> listTest = new ArrayList<>();
-        Unit infantryTest = new InfantryUnit("Knight", 10);
-        Unit RangeTest = new RangedUnit("Bowmen", 10);
-
-        listTest.add(infantryTest);
-        listTest.add(RangeTest);
-        armyTest.addAll(listTest);
-
         assertEquals(2, armyTest.getAllUnits().size());
-
     }
 
     @Test
     void getRandom() {
-        String testName = "Human Army";
-        Army armies = new Army(testName);
+        assertNotNull(armyTest.getRandom());
+    }
 
-        List<Unit> listTest = new ArrayList<>();
-        Unit infantryTest = new InfantryUnit("Knight", 10);
-        Unit RangeTest = new RangedUnit("Bowmen", 10);
-        Unit CavalryTest = new CavalryUnit("Rider", 10);
+    @Nested
+    public class Test_for_GetMethods_for_different_object_from_one_list {
 
-        listTest.add(infantryTest);
-        listTest.add(RangeTest);
-        listTest.add(CavalryTest);
+        @Test
+        public void Test_if_getInfantry_units_only_has_all_infantry_units_in_a_army(){
+            assertTrue(armyTest.getInfantryUnits().get(0) instanceof InfantryUnit);
+        }
 
-        armies.addAll(listTest);
+        @Test
+        public void Test_if_getRange_units_only_has_all_range_units_in_a_army(){
+            assertTrue(armyTest.getRangeUnits().get(0) instanceof RangedUnit);
+        }
 
-        assertNotNull(armies.getRandom());
+        @Test
+        public void Test_if_getCavalry_units_only_has_all_cavalry_units_in_a_army(){
+            assertTrue(armyTest.getCavalryUnits().get(0) instanceof CavalryUnit);
+        }
 
+        @Test
+        public void Test_if_getCommander_units_only_has_all_commander_units_in_a_army(){
+           assertTrue(armyTest.getCommanderUnits().get(0) instanceof CommanderUnit);
+        }
+
+        @Test
+        public void Test_to_see_if_commander_unit_can_be_accessed_from_getCavalryUnits(){
+           assertNotEquals(2, armyTest.getCavalryUnits().size());
+        }
     }
 
     @Test
