@@ -47,7 +47,6 @@ class BattleTest {
         Army test1 = new Army("A");
         Army test2 = new Army("B");
         Battle battle = new Battle(test1, test2);
-        battle.whoStarts();
 
         assertEquals("A\n[]\n\nB\n[]", battle.toString());
     }
