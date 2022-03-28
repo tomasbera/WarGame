@@ -15,7 +15,7 @@ class ArmyTest {
 
     @BeforeEach
     void Initiate_army_with_units(){
-        String testName = "Human Army";
+        String testName = "HumanArmyTest";
         armyTest = new Army(testName);
 
         List<Unit> listTest = new ArrayList<>();
@@ -35,26 +35,26 @@ class ArmyTest {
 
     @Test
     void Test_if_constructor_Works_as_expected(){
-        Army armyTest = new Army("Human Army");
-        assertEquals("Human Army", armyTest.getName());
+        Army armyTest = new Army("HumanArmyTest");
+        assertEquals("HumanArmyTest", armyTest.getName());
     }
 
     @Test
     void Test_to_see_if_other_constructor_also_works(){
         ArrayList<Unit> unitList = new ArrayList<>();
         unitList.add(new InfantryUnit("name",1,1,1,1));
-        Army armyTest = new Army("Human Army", unitList);
+        Army armyTest = new Army("HumanArmyTest", unitList);
         assertEquals(unitList.get(0), armyTest.getUnits().get(0));
     }
 
     @Test
     void getName() {
-        assertEquals("Human Army", armyTest.getName());
+        assertEquals("HumanArmyTest", armyTest.getName());
     }
 
     @Test
     void add() {
-        String testName = "Human Army";
+        String testName = "HumanArmyTest";
         Army armies = new Army(testName);
 
         Unit infantryTest = new InfantryUnit("Knight", 10);
@@ -65,12 +65,12 @@ class ArmyTest {
 
     @Test
     void addAll() {
-        assertEquals(3, armyTest.getUnits().size());
+        assertEquals(4, armyTest.getUnits().size());
     }
 
     @Test
     void remove() {
-        String testName = "Human Army";
+        String testName = "HumanArmyTest";
         Army armies = new Army(testName);
 
         Unit infantryTest = new InfantryUnit("Knight", 10);
@@ -89,7 +89,7 @@ class ArmyTest {
 
     @Test
     void getAllUnits() {
-        assertEquals(2, armyTest.getAllUnits().size());
+        assertEquals(4, armyTest.getAllUnits().size());
     }
 
     @Test
@@ -128,7 +128,7 @@ class ArmyTest {
 
     @Test
     void testEquals() {
-        String testName1 = "Human Army";
+        String testName1 = "HumanArmyTest";
         String testName2 = "Orc Army";
 
         Army armyTest1 = new Army(testName1);
@@ -144,7 +144,7 @@ class ArmyTest {
 
     @Test
     void testHashCode() {
-        String testName1 = "Human Army";
+        String testName1 = "HumanArmyTest";
         String testName2 = "Orc Army";
 
         Army armyTest1 = new Army(testName1);
@@ -157,9 +157,9 @@ class ArmyTest {
 
     @Test
     void testToString() {
-        String testName1 = "Human Army";
+        String testName1 = "HumanArmyTest";
         Army armyTest1 = new Army(testName1);
 
-        assertEquals("Human Army\nunits=[]", armyTest1.toString());
+        assertEquals("HumanArmyTest\nunits=[]", armyTest1.toString());
     }
 }
