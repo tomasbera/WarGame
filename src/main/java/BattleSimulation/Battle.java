@@ -73,12 +73,6 @@ public class Battle {
     }
 
     /**
-     * this method chooses the starting/attacking and defending army
-     */
-    public void whoStarts(){
-    }
-
-    /**
      * the toString method that print out both armies
      * @return both armies units
      */
