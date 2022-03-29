@@ -45,21 +45,7 @@ public class armyFiles {
         Files.lines(path)
                 .skip(1)
                 .forEach(line -> {
-                    String[] column = line.split(",");
-                    String unitType = column[0];
-                    if(Objects.equals(unitType, "InfantryUnit")){
-                        newUnits.add(new InfantryUnit(column[1], Integer.parseInt(column[2]), Integer.parseInt(column[2])
-                                ,Integer.parseInt(column[3]),Integer.parseInt(column[4])));
-                    } else if(Objects.equals(unitType, "RangedUnit")){
-                        newUnits.add(new RangedUnit(column[1], Integer.parseInt(column[2]), Integer.parseInt(column[2])
-                                ,Integer.parseInt(column[3]),Integer.parseInt(column[4])));
-                    } else if(Objects.equals(unitType, "CavalryUnit")){
-                        newUnits.add(new CavalryUnit(column[1], Integer.parseInt(column[2]), Integer.parseInt(column[2])
-                                ,Integer.parseInt(column[3]),Integer.parseInt(column[4])));
-                    }else if(Objects.equals(unitType, "CommanderUnit")){
-                        newUnits.add(new CommanderUnit(column[1], Integer.parseInt(column[2]), Integer.parseInt(column[2])
-                                ,Integer.parseInt(column[3]),Integer.parseInt(column[4])));
-                    }
+                    checkForUnit(line, newUnits);
                 });
         if (newUnits.size() == 0){
             throw new NullPointerException("This file doesnt contain any units");
@@ -67,5 +53,23 @@ public class armyFiles {
 
        newArmy.addAll(newUnits);
        return newArmy;
+    }
+
+    public static void checkForUnit(String line, ArrayList<Unit> newUnits){
+        String[] column = line.split(",");
+        String unitType = column[0];
+        if(Objects.equals(unitType, "InfantryUnit")){
+            newUnits.add(new InfantryUnit(column[1], Integer.parseInt(column[2]), Integer.parseInt(column[2])
+                    ,Integer.parseInt(column[3]),Integer.parseInt(column[4])));
+        } else if(Objects.equals(unitType, "RangedUnit")){
+            newUnits.add(new RangedUnit(column[1], Integer.parseInt(column[2]), Integer.parseInt(column[2])
+                    ,Integer.parseInt(column[3]),Integer.parseInt(column[4])));
+        } else if(Objects.equals(unitType, "CavalryUnit")){
+            newUnits.add(new CavalryUnit(column[1], Integer.parseInt(column[2]), Integer.parseInt(column[2])
+                    ,Integer.parseInt(column[3]),Integer.parseInt(column[4])));
+        }else if(Objects.equals(unitType, "CommanderUnit")){
+            newUnits.add(new CommanderUnit(column[1], Integer.parseInt(column[2]), Integer.parseInt(column[2])
+                    ,Integer.parseInt(column[3]),Integer.parseInt(column[4])));
+        }
     }
 }
