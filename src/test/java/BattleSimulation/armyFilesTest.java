@@ -17,6 +17,8 @@ public class armyFilesTest {
         assertEquals("InfantryUnit,Footman,10,15,10,2"+"\n", armyFiles.makeCSVString(InfantryTest));
     }
 
+    //TODO: check for corrupt files
+
     @Nested
     public class Test_makeCVSFile_method_and_exceptions {
 
@@ -64,6 +66,9 @@ public class armyFilesTest {
                 armyFiles.readFromCSV("NullArmyTest");
             });
         }
+
+        //TODO: check if the file exists, check if file is of csv format and if it has all needed attributes
+
 
     }
 
