@@ -15,7 +15,7 @@ public class armyFilesTest {
     @Test
     public void Test_if_createCSVString_creates_string_of_a_Unit(){
         Unit InfantryTest = new InfantryUnit("Footman", 10);
-        assertEquals("InfantryUnit,Footman,10,15,10,2"+"\n", armyFiles.makeCSVString(InfantryTest));
+        assertEquals("InfantryUnit,Footman,10"+"\n", armyFiles.makeCSVString(InfantryTest));
     }
 
     //TODO: check for corrupt files

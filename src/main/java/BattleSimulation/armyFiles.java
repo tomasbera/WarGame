@@ -19,8 +19,7 @@ public class armyFiles {
      * @return string of csv type of the specific unit
      */
     public static String makeCSVString(Unit u){
-        return u.getClass().getSimpleName() +","+ u.getName()+","+u.getHealth()+","+u.getAttack()+","+u.getArmor()
-                +","+u.getMelee()+"\n";
+        return u.getClass().getSimpleName() +","+ u.getName()+","+u.getHealth()+"\n";
     }
 
     /**
@@ -41,7 +40,7 @@ public class armyFiles {
         Writer writer = new FileWriter(armyFile.getAbsolutePath());
         writer.write(armyFile.getName()+"\n");
 
-        // puts all units in a army to a specific list
+        // puts all units in an army to a specific list
         army.getUnits()
                 .forEach(unit -> {
                     try {
@@ -62,6 +61,7 @@ public class armyFiles {
      * @throws IOException any mistakes with the file will throw an exception
      */
     public static Army readFromCSV(String armyName) throws IOException {
+        UnitFactory unitFactory = new UnitFactory();
         // finds path to wanted file
         Path path = Path.of("src/main/resources/armyFiles/"+armyName);
         if(Path.of("src/main/resources/armyFiles/"+armyName).getFileName() == null) throw new NoSuchFileException("File not found");
@@ -71,8 +71,9 @@ public class armyFiles {
         Files.lines(path)
                 .skip(1)
                 .forEach(line -> {
-                    //checkForCharacters(line);
-                    checkForUnit(line, newUnits);
+                    String[] column = line.split(",");
+                    if(column.length !=3 ) throw new IllegalArgumentException("File is not readable");
+                    newUnits.add(unitFactory.newUnitFactory(column[0],column[1],Integer.parseInt(column[2])));
                 });
         if (newUnits.size() == 0){
             throw new NullPointerException("This file doesnt contain any units");
@@ -80,32 +81,7 @@ public class armyFiles {
        newArmy.addAll(newUnits);
        return newArmy;
     }
-
-    /**
-     * method that checks which unitType a line from a file is
-     * @param line line from a file
-     * @param newUnits arrayList with the new Units created
-     */
-    public static void checkForUnit(String line, ArrayList<Unit> newUnits){
-        String[] column = line.split(",");
-        if(column.length < 6) throw new IllegalArgumentException("File is not readable");
-
-        // all 4 different unit types passed to an arraylist of units
-        String unitType = column[0];
-        if(Objects.equals(unitType, "InfantryUnit")){
-            newUnits.add(new InfantryUnit(column[1], Integer.parseInt(column[2]), Integer.parseInt(column[2])
-                    ,Integer.parseInt(column[3]),Integer.parseInt(column[4])));
-        } else if(Objects.equals(unitType, "RangedUnit")){
-            newUnits.add(new RangedUnit(column[1], Integer.parseInt(column[2]), Integer.parseInt(column[2])
-                    ,Integer.parseInt(column[3]),Integer.parseInt(column[4])));
-        } else if(Objects.equals(unitType, "CavalryUnit")){
-            newUnits.add(new CavalryUnit(column[1], Integer.parseInt(column[2]), Integer.parseInt(column[2])
-                    ,Integer.parseInt(column[3]),Integer.parseInt(column[4])));
-        }else if(Objects.equals(unitType, "CommanderUnit")){
-            newUnits.add(new CommanderUnit(column[1], Integer.parseInt(column[2]), Integer.parseInt(column[2])
-                    ,Integer.parseInt(column[3]),Integer.parseInt(column[4])));
-        }
-    }
+    
 
     /*
     public static void checkForCharacters(String lines) throws IllegalArgumentException{
