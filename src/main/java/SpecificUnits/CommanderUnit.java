@@ -33,18 +33,20 @@ public class CommanderUnit extends CavalryUnit{
      * the first attack of this unit will it will get a charge bonus +3
      * later on it will only have the melee attack as main attackBonus
      * @return ether +5 or +2 as a attackBonus, depends on the firstCharge bonus
+     * @param terrain
      */
     @Override
-     int getAttackBonus() {
-        return super.getAttackBonus();
+     int getAttackBonus(int terrain) {
+        return super.getAttackBonus(terrain);
     }
 
     /**
      * this unit has a better protection than basic infantry, and has a bonus of +3 to resistance
      * @return bonus of 3 as resistance
+     * @param terrain
      */
     @Override
-    int getResistBonus() {
-        return super.getResistBonus();
+    int getResistBonus(int terrain) {
+        return super.getResistBonus(terrain);
     }
 }

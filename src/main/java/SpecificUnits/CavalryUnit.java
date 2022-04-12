@@ -34,25 +34,37 @@ private boolean firstCharge = true;
      * the first attack of this unit will it will get a charge bonus +3
      * later on it will only have the melee attack as main attackBonus
      * @return ether +5 or +2 as a attackBonus, depends on the firstCharge bonus
+     * @param terrain
      */
     @Override
-     int getAttackBonus() {
-        int charge = 3;
-       if(firstCharge){
-           firstCharge = false;
-           return this.getMelee() + charge;
-       }
-
-       return this.getMelee();
+     int getAttackBonus(int terrain) {
+        if (terrain == 2){
+            if(firstCharge){
+                firstCharge = false;
+                return this.getMelee() + 5;
+            }
+            return this.getMelee();
+        } else {
+            if(firstCharge){
+                firstCharge = false;
+                return this.getMelee() + 3;
+            }
+            return this.getMelee();
+        }
     }
 
     /**
      * this unit has a better protection than basic infantry, and has a bonus of +3 to resistance
      * @return bonus of 3 as resistance
+     * @param terrain
      */
     @Override
-    int getResistBonus() {
+    int getResistBonus(int terrain) {
         int cavalry = 3;
-        return cavalry;
+        if (terrain == 3){
+            return 0;
+        } else {
+            return cavalry;
+        }
     }
 }

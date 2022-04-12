@@ -31,18 +31,22 @@ public class InfantryUnit extends Unit{
     /**
      * this unit is a melee unit
      * @return which means that it gets a +2 as a AttackBonus
+     * @param terrain
      */
     @Override
-     int getAttackBonus() {
-        return this.getMelee();
+     int getAttackBonus(int terrain) {
+        if(terrain == 3) return this.getMelee() + 1;
+        else return this.getMelee();
     }
 
     /**
      * infantry unit has only a small armor bonus
      * @return because of small armor bonus add 1 as a ResistBonus
+     * @param terrain
      */
     @Override
-    int getResistBonus() {
-        return 1;
+    int getResistBonus(int terrain) {
+        if(terrain == 3) return  2;
+        else return 1;
     }
 }

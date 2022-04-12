@@ -9,10 +9,11 @@ import java.util.Random;
  */
 public class Battle {
 
-    Army attackingArmy;
-    Army defendingArmy;
-    Army armyOne;
-    Army armyTwo;
+    private Army attackingArmy;
+    private Army defendingArmy;
+    private Army armyOne;
+    private Army armyTwo;
+    private Terrain terrain;
 
     /**
      * this is a constructor for the battle class that takes two classes.
@@ -50,13 +51,13 @@ public class Battle {
 
             winner = false;
             while (!winner){
-                attackingUnit.attack(defendingUnit);
+                attackingUnit.attack(defendingUnit, terrain.getTerrainNum());
                 if (defendingUnit.getHealth() <= 0){
                     defendingArmy.remove(defendingUnit);
                     winner = true;
                 }
                 else {
-                    defendingUnit.attack(attackingUnit);
+                    defendingUnit.attack(attackingUnit, terrain.getTerrainNum());
                     if (attackingUnit.getHealth() <= 0){
                         attackingArmy.remove(attackingUnit);
                         winner = true;

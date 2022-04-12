@@ -33,22 +33,34 @@ public class RangedUnit extends Unit {
     /**
      * Range unit has a range attack bonus
      * @return because this unit is range, this unit gets +3 as AttackBonus
+     * @param terrain
      */
     @Override
-     int getAttackBonus() {
-        if(distanceDamage >= 3){
-            return this.getMelee();
+     int getAttackBonus(int terrain) {
+        if (terrain == 1){
+            if(distanceDamage >= 3){
+                return this.getMelee() + 1;
+            }
+            distanceDamage++;
+            return 4;
+        } else if (terrain == 3) {
+            return getMelee() + 1;
+        } else {
+            if(distanceDamage >= 3){
+                return this.getMelee();
+            }
+            distanceDamage++;
+            return 2;
         }
-        distanceDamage++;
-        return 3;
     }
 
     /**
      * Range units has an uniq resistantBonus that works as distance between him and his opponent
      * @return because of this the range unit returns a bonus based on the variable multiplier (distance)
+     * @param terrain
      */
     @Override
-    int getResistBonus() {
+    int getResistBonus(int terrain) {
         int resistBonus = 6 - 2 * distanceResist;
         if(resistBonus <= 2){
             resistBonus = 2;

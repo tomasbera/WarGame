@@ -46,8 +46,9 @@ public abstract class Unit {
      * this is a attack method that takes simulates a unit attacking the opponent
      * @param opponent the one this unit attacks
      */
-    public void attack(Unit opponent){
-        int newHealth = opponent.health - (this.attack + this.getAttackBonus()) + (opponent.armor + opponent.getResistBonus());
+    public void attack(Unit opponent, int terrain){
+        int newHealth = opponent.health - (this.attack + this.getAttackBonus(terrain)) +
+                (opponent.armor + opponent.getResistBonus(terrain));
         if(newHealth < opponent.getHealth()){
             opponent.setHealth(newHealth);
         }
@@ -107,8 +108,9 @@ public abstract class Unit {
      *     an abstract method which wil be declared,and further used in subclasses
      * </p>
      * @return attackBonus as an int
+     * @param terrain
      */
-     abstract int getAttackBonus();
+     abstract int getAttackBonus(int terrain);
 
     /**
      * an abstract method for showing an armor bonus
@@ -116,8 +118,9 @@ public abstract class Unit {
      *     an abstract method which wil be declared,and further used in subclasses
      * </p>
      * @return ResistBonus as an int
+     * @param terrain
      */
-     abstract int getResistBonus();
+     abstract int getResistBonus(int terrain);
 
 
     /**

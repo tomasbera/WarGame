@@ -10,23 +10,23 @@ class RangedUnitTest {
     void attack() {
         Unit test1 = new Unit("Bowman", 10, 1, 0, 0) {
             @Override
-            int getAttackBonus() {
+            int getAttackBonus(int terrain) {
                 return 0;
             }
 
             @Override
-            int getResistBonus() {
+            int getResistBonus(int terrain) {
                 return 0;
             }
         };
         Unit test2 = new Unit("Knight", 10, 0, 0, 0) {
             @Override
-            int getAttackBonus() {
+            int getAttackBonus(int terrain) {
                 return 0;
             }
 
             @Override
-            int getResistBonus() {
+            int getResistBonus(int terrain) {
                 return 0;
             }
         };
