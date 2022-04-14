@@ -9,22 +9,40 @@
    <children>
       <VBox layoutX="258.0" layoutY="100.0" prefHeight="205.0" prefWidth="296.0">
          <children>
-            <ListView prefHeight="200.0" prefWidth="200.0" />
+            <TableView fx:id="winningArmyTable" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="winningArmyUT" prefWidth="123.0" text="Unit Type" />
+                <TableColumn fx:id="winningArmyUN" prefWidth="115.0" text="Unit Name" />
+                  <TableColumn fx:id="winningArmyH" prefWidth="57.0" text="Health" />
+              </columns>
+            </TableView>
          </children>
       </VBox>
       <VBox layoutX="-7.0" layoutY="306.0" prefHeight="295.0" prefWidth="413.0">
          <children>
-            <ListView prefHeight="298.0" prefWidth="413.0" />
+            <TableView fx:id="armyOneTable" prefHeight="293.0" prefWidth="413.0">
+              <columns>
+                <TableColumn fx:id="armyOneUT" prefWidth="173.0" text="Unit Type" />
+                <TableColumn fx:id="armyOneUN" prefWidth="148.0" text="Unit Name" />
+                  <TableColumn fx:id="armyOneH" prefWidth="91.0" text="Health" />
+              </columns>
+            </TableView>
          </children>
       </VBox>
       <VBox layoutX="406.0" layoutY="306.0" prefHeight="295.0" prefWidth="396.0">
          <children>
-            <ListView prefHeight="295.0" prefWidth="396.0" />
+            <TableView fx:id="armyTwoTable" prefHeight="293.0" prefWidth="413.0">
+               <columns>
+                  <TableColumn fx:id="armyTwoUT" prefWidth="173.0" text="Unit Type" />
+                  <TableColumn fx:id="armyTwoUN" prefWidth="147.0" text="Unit Name" />
+                  <TableColumn fx:id="armyTwoH" prefWidth="75.0" text="Health" />
+               </columns>
+            </TableView>
          </children>
       </VBox>
-      <HBox prefHeight="153.0" prefWidth="800.0">
+      <HBox prefHeight="62.0" prefWidth="800.0">
          <children>
-            <AnchorPane prefHeight="62.0" prefWidth="800.0">
+            <AnchorPane prefHeight="46.0" prefWidth="800.0">
                <children>
                   <Text layoutX="340.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WarGames" wrappingWidth="120.689453125">
                      <font>
@@ -37,25 +55,16 @@
                         <Button minWidth="47.0" mnemonicParsing="false" onAction="#toArmyDetails" prefHeight="25.0" prefWidth="93.0" text="Army Details" />
                     </buttons>
                   </ButtonBar>
-                  <Button layoutX="563.0" layoutY="102.0" mnemonicParsing="false" text="Simulate" />
-                  <ChoiceBox fx:id="warGamesTerrainInnput" layoutX="58.0" layoutY="102.0" onMouseClicked="#setImage" prefWidth="150.0" />
-                  <Text fx:id="layoutText" layoutX="97.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hill" wrappingWidth="72.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="388.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 - 0" />
-                  <Button layoutX="562.0" layoutY="137.0" mnemonicParsing="false" text="Reset" />
                </children>
             </AnchorPane>
          </children>
       </HBox>
-      <Text layoutX="14.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army1">
+      <Text fx:id="armyOneText" layoutX="14.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army1">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="734.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army2">
+      <Text fx:id="armyTwoText" layoutX="734.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army2">
          <font>
             <Font size="18.0" />
          </font>
@@ -65,5 +74,13 @@
             <ImageView fx:id="layoutImageView" fitHeight="136.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </VBox>
+      <Button layoutX="258.0" layoutY="71.0" mnemonicParsing="false" onAction="#simulateBattle" text="Simulate" />
+      <Text fx:id="layoutText" layoutX="104.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hill" wrappingWidth="72.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="warGamesTerrainInput" layoutX="65.0" layoutY="98.0" onMouseClicked="#setImage" prefWidth="150.0" />
+      <Text fx:id="scoreText" layoutX="388.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 - 0" />
    </children>
 </AnchorPane>

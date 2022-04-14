@@ -49,4 +49,9 @@ public class CommanderUnit extends CavalryUnit{
     int getResistBonus(int terrain) {
         return super.getResistBonus(terrain);
     }
+
+    @Override
+    public Unit deepCopyUnit(Unit u) {
+        return new CommanderUnit(u.getName(), u.getHealth(), u.getAttack(), u.getArmor(), u.getMelee());
+    }
 }

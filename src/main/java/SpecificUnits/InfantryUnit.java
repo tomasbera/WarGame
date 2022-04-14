@@ -49,4 +49,9 @@ public class InfantryUnit extends Unit{
         if(terrain == 3) return  2;
         else return 1;
     }
+
+    @Override
+    public Unit deepCopyUnit(Unit u) {
+        return new InfantryUnit(u.getName(), u.getHealth(), u.getAttack(), u.getArmor(), u.getMelee());
+    }
 }

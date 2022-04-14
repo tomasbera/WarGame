@@ -68,4 +68,9 @@ public class RangedUnit extends Unit {
         distanceResist++;
         return resistBonus;
     }
+
+    @Override
+    public Unit deepCopyUnit(Unit u) {
+        return new RangedUnit(u.getName(), u.getHealth(), u.getAttack(), u.getArmor(), u.getMelee());
+    }
 }

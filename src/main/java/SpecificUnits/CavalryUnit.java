@@ -67,4 +67,9 @@ private boolean firstCharge = true;
             return cavalry;
         }
     }
+
+    @Override
+    public Unit deepCopyUnit(Unit u) {
+        return new CavalryUnit(u.getName(), u.getHealth(), u.getAttack(), u.getArmor(), u.getMelee());
+    }
 }

@@ -1,11 +1,12 @@
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\SpecificUnits\CavalryUnit.java
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\SpecificUnits\Unit.java
-C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\WarGamesGUI.java
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\BattleSimulation\Terrain.java
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\SpecificUnits\RangedUnit.java
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\BattleSimulation\armyFiles.java
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\BattleSimulation\UnitFactory.java
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\BattleSimulation\Battle.java
+C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\Maintnance\WarGamesGUI.java
+C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\Maintnance\WarGameApp.java
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\BattleSimulation\Army.java
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\Maintnance\SwitchScene.java
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\SpecificUnits\InfantryUnit.java
@@ -13,4 +14,3 @@ C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\Maintnance\ArmyDet
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\SpecificUnits\CommanderUnit.java
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\Maintnance\AlertBox.java
 C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\Maintnance\SimulationViewController.java
-C:\Users\Administrator\Arbkrav\Porsjekt\WarGame\src\main\java\WarGameApp.java

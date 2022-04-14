@@ -134,4 +134,6 @@ public abstract class Unit {
                 "\nDamage/DP:\n" + attack+
                 "\nArmor/AP \n" + armor;
     }
+
+    public abstract Unit deepCopyUnit(Unit unit);
 }

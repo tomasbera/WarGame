@@ -13,7 +13,7 @@ public class Battle {
     private Army defendingArmy;
     private Army armyOne;
     private Army armyTwo;
-    private Terrain terrain;
+    private Army winningArmy;
 
     /**
      * this is a constructor for the battle class that takes two classes.
@@ -30,8 +30,6 @@ public class Battle {
      * @return return the winning army as an Army object
      */
     public Army simulate(int terrain){
-        Army winningArmy;
-
         Random random = new Random();
         boolean randomBool = random.nextBoolean();
 
@@ -71,6 +69,18 @@ public class Battle {
             winningArmy = armyTwo;
         }
         return winningArmy;
+    }
+
+    public Army getWinningArmy() {
+        return winningArmy;
+    }
+
+    public Army getArmyOne() {
+        return armyOne;
+    }
+
+    public Army getArmyTwo() {
+        return armyTwo;
     }
 
     /**
