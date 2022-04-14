@@ -31,7 +31,7 @@ class RangedUnitTest {
             }
         };
 
-        test1.attack(test2);
+        test1.attack(test2, 1);
 
         assertEquals(9, test2.getHealth());
     }
@@ -92,13 +92,13 @@ class RangedUnitTest {
         Unit test1 = new RangedUnit("Bowman",10,2,1,1);
         Unit test2 = new InfantryUnit("Knight",20,1,1,1);
 
-        test1.attack(test2);
-        test1.attack(test2);
-        test1.attack(test2);
-        test1.attack(test2);
-        test1.attack(test2);
+        test1.attack(test2, 1);
+        test1.attack(test2, 1);
+        test1.attack(test2, 1);
+        test1.attack(test2, 1);
+        test1.attack(test2, 1);
 
-        assertEquals(9, test2.getHealth());
+        assertEquals(4, test2.getHealth());
     }
 
     @Test
@@ -106,11 +106,11 @@ class RangedUnitTest {
         Unit test1 = new RangedUnit("Bowman",15,0,0,0);
         Unit test2 = new InfantryUnit("Knight",0,3,0,2);
 
-        test2.attack(test1);
-        test2.attack(test1);
-        test2.attack(test1);
-        test2.attack(test1);
-        test2.attack(test1);
+        test2.attack(test1, 1);
+        test2.attack(test1, 1);
+        test2.attack(test1, 1);
+        test2.attack(test1, 1);
+        test2.attack(test1, 1);
 
         assertEquals(5, test1.getHealth());
 

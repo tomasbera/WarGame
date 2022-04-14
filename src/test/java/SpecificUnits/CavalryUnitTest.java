@@ -31,7 +31,7 @@ class CavalryUnitTest {
             }
         };
 
-        test1.attack(test2);
+        test1.attack(test2, 1);
 
         assertEquals(9, test2.getHealth());
     }
@@ -92,9 +92,9 @@ class CavalryUnitTest {
         Unit test1 = new CavalryUnit("Rider",0,2,0,2);
         Unit test2 = new InfantryUnit("Knight",20,0,0,0);
 
-        test1.attack(test2);
-        test1.attack(test2);
-        test1.attack(test2);
+        test1.attack(test2, 1);
+        test1.attack(test2, 1);
+        test1.attack(test2, 1);
 
 //test alle
         assertEquals(8, test2.getHealth());
@@ -105,8 +105,8 @@ class CavalryUnitTest {
         Unit test1 = new CavalryUnit("Rider",10,0,0,0);
         Unit test2 = new InfantryUnit("Knight",0,2,0,2);
 
-        test2.attack(test1);
-        test2.attack(test1);
+        test2.attack(test1, 1);
+        test2.attack(test1, 1);
 
         assertEquals(8, test1.getHealth());
 

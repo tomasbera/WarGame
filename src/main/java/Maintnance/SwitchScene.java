@@ -22,7 +22,7 @@ public class SwitchScene {
      * @throws IOException when path not found
      */
     public static void switchScene(String location, Event event) throws IOException {
-        Parent viewPage = FXMLLoader.load(Objects.requireNonNull(SwitchScene.class.getResource("src/main/resources/ViewClasses"
+        Parent viewPage = FXMLLoader.load(Objects.requireNonNull(SwitchScene.class.getResource("/ViewClasses/"
                 + location + ".fxml")));
 
         Scene page = new Scene(viewPage);

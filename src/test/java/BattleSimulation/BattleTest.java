@@ -38,7 +38,7 @@ class BattleTest {
         armyTest1.addAll(listTest1);
         armyTest2.addAll(listTest2);
 
-        String result = battleTest.simulate().toString();
+        String result = battleTest.simulate(1).toString();
         System.out.println(result);
     }
 

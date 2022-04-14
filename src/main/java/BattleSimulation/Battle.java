@@ -29,7 +29,7 @@ public class Battle {
      * this method is the simulation of the battle, two armies attack each other, and one wins
      * @return return the winning army as an Army object
      */
-    public Army simulate(){
+    public Army simulate(int terrain){
         Army winningArmy;
 
         Random random = new Random();
@@ -51,13 +51,13 @@ public class Battle {
 
             winner = false;
             while (!winner){
-                attackingUnit.attack(defendingUnit, terrain.getTerrainNum());
+                attackingUnit.attack(defendingUnit, terrain);
                 if (defendingUnit.getHealth() <= 0){
                     defendingArmy.remove(defendingUnit);
                     winner = true;
                 }
                 else {
-                    defendingUnit.attack(attackingUnit, terrain.getTerrainNum());
+                    defendingUnit.attack(attackingUnit, terrain);
                     if (attackingUnit.getHealth() <= 0){
                         attackingArmy.remove(attackingUnit);
                         winner = true;
