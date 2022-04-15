@@ -136,4 +136,8 @@ public abstract class Unit {
     }
 
     public abstract Unit deepCopyUnit(Unit unit);
+
+    public static String getUnitType() {
+        return Unit.class.getTypeName();
+    }
 }

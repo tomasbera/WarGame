@@ -4,7 +4,9 @@ package SpecificUnits;
  * Cavalry class that represents the cavalry unit with special features
  */
 public class CavalryUnit extends Unit {
-private boolean firstCharge = true;
+
+    private static String unitType;
+    private boolean firstCharge = true;
     /**
      * this is the constructor for all units
      * @param name
@@ -71,5 +73,10 @@ private boolean firstCharge = true;
     @Override
     public Unit deepCopyUnit(Unit u) {
         return new CavalryUnit(u.getName(), u.getHealth(), u.getAttack(), u.getArmor(), u.getMelee());
+    }
+
+    public static String getUnitType() {
+        unitType = "CavalryUnit";
+        return unitType;
     }
 }

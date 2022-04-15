@@ -4,6 +4,8 @@ package SpecificUnits;
  * Range class that represents all the variables and methods of a ranger unit
  */
 public class RangedUnit extends Unit {
+
+    private static String unitType;
     private int distanceDamage = 0;
     private int distanceResist = 0;
 
@@ -72,5 +74,10 @@ public class RangedUnit extends Unit {
     @Override
     public Unit deepCopyUnit(Unit u) {
         return new RangedUnit(u.getName(), u.getHealth(), u.getAttack(), u.getArmor(), u.getMelee());
+    }
+
+    public static String getUnitType() {
+        unitType = "RangeUnit";
+        return unitType;
     }
 }

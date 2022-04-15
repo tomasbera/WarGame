@@ -2,6 +2,7 @@ package Maintnance;
 
 import BattleSimulation.Army;
 import BattleSimulation.ArmyFiles;
+import SpecificUnits.InfantryUnit;
 import SpecificUnits.Unit;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -47,7 +48,8 @@ public class ArmyDetailsViewController implements Initializable {
     @FXML
     public void updateArmyOneTabel(Army thisArmy){
         //winning army table update
-        armyOneUT.setCellValueFactory(new PropertyValueFactory<Unit, String>("name"));
+        armyOneUT.setText(Unit.getUnitType());
+        armyOneUT.setCellValueFactory(new PropertyValueFactory<Unit, String>("unitType"));
         armyOneUN.setCellValueFactory(new PropertyValueFactory<Unit, String>("name"));
         armyOneH.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("health"));
 
@@ -58,9 +60,9 @@ public class ArmyDetailsViewController implements Initializable {
     }
 
     @FXML
-    public void updateArmyTwoTabel(Army thisArmy){
+    public void updateArmyTwoTable(Army thisArmy){
         //winning army table update
-        armyTwoUT.setCellValueFactory(new PropertyValueFactory<Unit, String>("name"));
+        armyTwoUT.setCellValueFactory(new PropertyValueFactory<Unit, String>("unitType"));
         armyTwoUN.setCellValueFactory(new PropertyValueFactory<Unit, String>("name"));
         armyTwoH.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("health"));
 
@@ -103,6 +105,6 @@ public class ArmyDetailsViewController implements Initializable {
         }
         WarGamesGUI.ArmyTwo = armyFiles.readFromCSV(armyTwoFilePath);
         armyTwo = WarGamesGUI.ArmyTwo;
-        updateArmyTwoTabel(armyTwo);
+        updateArmyTwoTable(armyTwo);
     }
 }

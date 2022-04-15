@@ -5,6 +5,8 @@ package SpecificUnits;
  */
 public class CommanderUnit extends CavalryUnit{
 
+    private static String unitType;
+
     /**
      * this is the constructor for all units
      * @param name
@@ -53,5 +55,10 @@ public class CommanderUnit extends CavalryUnit{
     @Override
     public Unit deepCopyUnit(Unit u) {
         return new CommanderUnit(u.getName(), u.getHealth(), u.getAttack(), u.getArmor(), u.getMelee());
+    }
+
+    public static String getUnitType() {
+        unitType = "CommanderUnit";
+        return unitType;
     }
 }
