@@ -46,8 +46,12 @@ public class InfantryUnit extends Unit{
      */
     @Override
     int getResistBonus(int terrain) {
-        if(terrain == 3) return  2;
-        else return 1;
+        if(terrain == 3){
+            return  2;
+        }
+        else{
+            return 1;
+        }
     }
 
     @Override

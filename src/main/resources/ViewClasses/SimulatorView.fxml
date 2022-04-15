@@ -18,26 +18,14 @@
             </TableView>
          </children>
       </VBox>
-      <VBox layoutX="-7.0" layoutY="306.0" prefHeight="295.0" prefWidth="413.0">
+      <VBox layoutX="7.0" layoutY="306.0" prefHeight="295.0" prefWidth="399.0">
          <children>
-            <TableView fx:id="armyOneTable" prefHeight="293.0" prefWidth="413.0">
-              <columns>
-                <TableColumn fx:id="armyOneUT" prefWidth="173.0" text="Unit Type" />
-                <TableColumn fx:id="armyOneUN" prefWidth="148.0" text="Unit Name" />
-                  <TableColumn fx:id="armyOneH" prefWidth="91.0" text="Health" />
-              </columns>
-            </TableView>
+            <ListView fx:id="ArmyOneList" prefHeight="294.0" prefWidth="391.0" />
          </children>
       </VBox>
-      <VBox layoutX="406.0" layoutY="306.0" prefHeight="295.0" prefWidth="396.0">
+      <VBox layoutX="406.0" layoutY="306.0" prefHeight="295.0" prefWidth="390.0">
          <children>
-            <TableView fx:id="armyTwoTable" prefHeight="293.0" prefWidth="413.0">
-               <columns>
-                  <TableColumn fx:id="armyTwoUT" prefWidth="173.0" text="Unit Type" />
-                  <TableColumn fx:id="armyTwoUN" prefWidth="147.0" text="Unit Name" />
-                  <TableColumn fx:id="armyTwoH" prefWidth="75.0" text="Health" />
-               </columns>
-            </TableView>
+            <ListView fx:id="ArmyTwoList" prefHeight="293.0" prefWidth="378.0" />
          </children>
       </VBox>
       <HBox prefHeight="62.0" prefWidth="800.0">
@@ -64,7 +52,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="armyTwoText" layoutX="734.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army2">
+      <Text fx:id="armyTwoText" layoutX="692.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army2">
          <font>
             <Font size="18.0" />
          </font>

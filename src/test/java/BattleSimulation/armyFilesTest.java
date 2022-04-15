@@ -15,7 +15,7 @@ public class armyFilesTest {
     @Test
     public void Test_if_createCSVString_creates_string_of_a_Unit(){
         Unit InfantryTest = new InfantryUnit("Footman", 10);
-        assertEquals("InfantryUnit,Footman,10"+"\n", armyFiles.makeCSVString(InfantryTest));
+        assertEquals("InfantryUnit,Footman,10"+"\n", ArmyFiles.makeCSVString(InfantryTest));
     }
 
     //TODO: check for corrupt files
@@ -31,7 +31,7 @@ public class armyFilesTest {
             armyTest.add(InfantryTest);
             armyTest.add(RangeTest);
 
-            File file = armyFiles.makeCSVFile(armyTest);
+            File file = ArmyFiles.makeCSVFile(armyTest);
             assertNotNull(file);
             file.delete();
         }
@@ -40,7 +40,7 @@ public class armyFilesTest {
         public void Test_if_makeCVSFile_throws_IllegalArgumentException_when_a_file_already_exists(){
             Army armyFileExisting = new Army("ExsistingFiletest");
             assertThrows(IllegalArgumentException.class, () -> {
-                armyFiles.makeCSVFile(armyFileExisting);
+                ArmyFiles.makeCSVFile(armyFileExisting);
             });
         }
     }
@@ -50,12 +50,14 @@ public class armyFilesTest {
 
         @Test
         public void Test_if_readFromCSV_creates_a_army_of_a_wanted_file() throws IOException {
-            Army armyFileTest = armyFiles.readFromCSV("HumanArmyTest");
+            ArmyFiles armyFiles = new ArmyFiles();
+            Army armyFileTest = armyFiles.readFromCSV("src/main/resources/armyFiles/HumanArmyTest");
             assertEquals(2, armyFileTest.getUnits().size());
         }
 
         @Test
         public void Test_if_readFromCSV_throws_IO_exception(){
+            ArmyFiles armyFiles = new ArmyFiles();
             assertThrows(IOException.class, () -> {
                 armyFiles.readFromCSV("");
             });
@@ -63,29 +65,25 @@ public class armyFilesTest {
 
         @Test
         public void Test_if_readFromCSV_throws_NullPointerException_when_file_has_no_units(){
+            ArmyFiles armyFiles = new ArmyFiles();
             assertThrows(NullPointerException.class, () -> {
-                armyFiles.readFromCSV("NullArmyTest");
+                armyFiles.readFromCSV("src/main/resources/armyFiles/NullArmyTest");
             });
         }
 
         @Test
         public void Test_if_readFromCSV_throws_IllegalArgumentException_when_file_not_readable(){
+            ArmyFiles armyFiles = new ArmyFiles();
             assertThrows(IllegalArgumentException.class, () -> {
-                armyFiles.readFromCSV("NotReadableFile");
+                armyFiles.readFromCSV("src/main/resources/armyFiles/NotReadableFile");
             });
         }
 
         @Test
         public void Test_if_readFromCSV_throws_NoSuchFileException_when_a_file_doenst_exits(){
+            ArmyFiles armyFiles = new ArmyFiles();
             assertThrows(NoSuchFileException.class, () -> {
                 armyFiles.readFromCSV("NoFileExist");
-            });
-        }
-
-        @Test
-        public void Test_if_file_has_units_and_throws_if_not(){
-            assertThrows(NullPointerException.class, () -> {
-                armyFiles.readFromCSV("NullArmyTest");
             });
         }
 
@@ -93,7 +91,7 @@ public class armyFilesTest {
         @Test
         public void Test_if_file_is_corrupt_or_has_illegal_characters_throw_IllegalArgumentException(){
             assertThrows(IllegalArgumentException.class, () -> {
-                armyFiles.readFromCSV("IllegalCharacters");
+                ArmyFiles.readFromCSV("IllegalCharacters");
             });
         }
          */

@@ -1,6 +1,8 @@
 package BattleSimulation;
 
+import Maintnance.WarGamesGUI;
 import SpecificUnits.*;
+import javafx.stage.FileChooser;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -11,7 +13,7 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class armyFiles {
+public class ArmyFiles {
 
     /**
      * method that takes a unit and converts it to a string of csv type
@@ -30,7 +32,7 @@ public class armyFiles {
      */
     public static File makeCSVFile(Army army) throws IOException{
         //makes a new file in the armyFile folder with the army name
-        File armyFile = new File("src/main/resources/armyFiles/"+army.getName().trim());
+        File armyFile = new File("src/main/resources/ArmyFiles/"+army.getName().trim());
 
         //checks if file is already in registry
         if(armyFile.exists() && !armyFile.isDirectory()) {
@@ -56,19 +58,23 @@ public class armyFiles {
 
     /**
      * method that takes a file and creates an army form its context
-     * @param armyName the file you are looking for also the name of the army
      * @return the new Army created from the file
      * @throws IOException any mistakes with the file will throw an exception
      */
-    public static Army readFromCSV(String armyName) throws IOException {
+    public Army readFromCSV(String armyPath) throws IOException {
         UnitFactory unitFactory = new UnitFactory();
-        // finds path to wanted file
-        Path path = Path.of("src/main/resources/armyFiles/"+armyName);
-        if(Path.of("src/main/resources/armyFiles/"+armyName).getFileName() == null) throw new NoSuchFileException("File not found");
 
-        Army newArmy = new Army(armyName);
+        /*
+        // finds path to wanted file
+        Path path = Path.of("src/main/resources/ArmyFiles/"+armyName);
+        if(Path.of("src/main/resources/ArmyFiles/"+armyName).getFileName() == null) throw new NoSuchFileException("File not found");
+
+         */
+        File file = new File(armyPath);
+
+        Army newArmy = new Army(file.getName().split("\\.")[0]);
         ArrayList<Unit> newUnits = new ArrayList<>();
-        Files.lines(path)
+        Files.lines(Path.of(file.getAbsolutePath()))
                 .skip(1)
                 .forEach(line -> {
                     String[] column = line.split(",");
@@ -92,4 +98,14 @@ public class armyFiles {
         if (result) throw new IllegalArgumentException("Illegal characters found in file");
     }
     */
+
+    public String getFilePath() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select army from file");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("CSV", "*.csv"));
+        File file = fileChooser.showOpenDialog(WarGamesGUI.getStage());
+        if (file != null)
+            return file.getPath();
+        return null;
+    }
 }

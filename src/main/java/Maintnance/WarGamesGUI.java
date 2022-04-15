@@ -1,18 +1,17 @@
 package Maintnance;
 
 import BattleSimulation.Army;
-import BattleSimulation.Battle;
-import SpecificUnits.InfantryUnit;
-import SpecificUnits.Unit;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class WarGamesGUI extends Application {
 
-    static Army ArmyOne = new Army("Human Army");
+    static Army ArmyOne;
     static Army ArmyTwo = new Army("Orc Army");
+    private static Stage startStage;
 
     /**
      * main method that starts the application
@@ -29,7 +28,8 @@ public class WarGamesGUI extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ViewClasses/SimulatorView.fxml"));
+        startStage = stage;
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/ViewClasses/ArmyDetailView.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         stage.setTitle("WarGames");
         stage.setScene(scene);
@@ -56,22 +56,29 @@ public class WarGamesGUI extends Application {
     }
 
     public static void startData(){
+        /*
         Unit infantry = new InfantryUnit("man", 10);
-        Unit range = new InfantryUnit("archer", 10);
-        Unit cav = new InfantryUnit("rider", 10);
-        Unit com = new InfantryUnit("king", 10);
+        Unit range = new RangedUnit("archer", 10);
+        Unit cav = new CavalryUnit("rider", 10);
+        Unit com = new CommanderUnit("king", 10);
         ArmyOne.add(infantry);
         ArmyOne.add(range);
         ArmyOne.add(cav);
         ArmyOne.add(com);
 
         Unit infantry2 = new InfantryUnit("orc", 10);
-        Unit range2 = new InfantryUnit("crossbow", 10);
-        Unit cav2 = new InfantryUnit("strider", 10);
-        Unit com2 = new InfantryUnit("Sauron", 10);
+        Unit range2 = new RangedUnit("crossbow", 10);
+        Unit cav2 = new CavalryUnit("strider", 10);
+        Unit com2 = new CommanderUnit("Sauron", 10);
         ArmyTwo.add(infantry2);
         ArmyTwo.add(range2);
         ArmyTwo.add(cav2);
         ArmyTwo.add(com2);
+
+         */
+    }
+
+    public static Window getStage() {
+        return startStage;
     }
 }

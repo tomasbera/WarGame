@@ -8,19 +8,31 @@
    <children>
       <VBox layoutX="-2.0" layoutY="161.0" prefHeight="440.0" prefWidth="399.0">
          <children>
-            <ListView prefHeight="441.0" prefWidth="390.0" />
+            <TableView fx:id="armyOneTableView" prefHeight="438.0" prefWidth="399.0">
+              <columns>
+                <TableColumn fx:id="armyOneUT" prefWidth="158.0" text="UnitType" />
+                <TableColumn fx:id="armyOneUN" prefWidth="163.0" text="UnitName" />
+                  <TableColumn fx:id="armyOneH" prefWidth="77.0" text="UnitHealth" />
+              </columns>
+            </TableView>
          </children>
       </VBox>
       <VBox layoutX="400.0" layoutY="161.0" prefHeight="440.0" prefWidth="399.0">
          <children>
-            <ListView prefHeight="500.0" prefWidth="399.0" />
+            <TableView fx:id="armyTwoTableView" prefHeight="438.0" prefWidth="399.0">
+              <columns>
+                <TableColumn fx:id="armyTwoUT" prefWidth="174.0" text="UnitType" />
+                <TableColumn fx:id="armyTwoUN" prefWidth="154.0" text="UnitName" />
+                  <TableColumn fx:id="armyTwoH" minWidth="0.0" prefWidth="70.0" text="UnitHealth" />
+              </columns>
+            </TableView>
          </children>
       </VBox>
       <HBox prefHeight="160.0" prefWidth="800.0">
          <children>
             <AnchorPane prefHeight="160.0" prefWidth="800.0">
                <children>
-                  <Text layoutX="282.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army1" wrappingWidth="55.9248046875">
+                  <Text fx:id="armyOneText" layoutX="14.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army1" wrappingWidth="265.9248046875">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -30,7 +42,7 @@
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text layoutX="457.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army2">
+                  <Text fx:id="armyTwoText" layoutX="483.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Army2" wrappingWidth="299.78515625">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -41,8 +53,8 @@
                         <Button mnemonicParsing="false" text="ArmyDetails" />
                     </buttons>
                   </ButtonBar>
-                  <Button layoutX="125.0" layoutY="119.0" mnemonicParsing="false" text="Select Army" />
-                  <Button layoutX="599.0" layoutY="120.0" mnemonicParsing="false" text="Select Army" />
+                  <Button layoutX="317.0" layoutY="119.0" mnemonicParsing="false" onAction="#getFileArmyOne" text="Select Army" />
+                  <Button layoutX="400.0" layoutY="119.0" mnemonicParsing="false" onAction="#getFileArmyTwo" text="Select Army" />
                </children>
             </AnchorPane>
          </children>
