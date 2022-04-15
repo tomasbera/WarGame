@@ -8,6 +8,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -64,17 +65,9 @@ public class ArmyFiles {
     public Army readFromCSV(String armyPath) throws IOException {
         UnitFactory unitFactory = new UnitFactory();
 
-        /*
-        // finds path to wanted file
-        Path path = Path.of("src/main/resources/ArmyFiles/"+armyName);
-        if(Path.of("src/main/resources/ArmyFiles/"+armyName).getFileName() == null) throw new NoSuchFileException("File not found");
-
-         */
-        File file = new File(armyPath);
-
-        Army newArmy = new Army(file.getName().split("\\.")[0]);
+        Army newArmy = new Army(Files.readAllLines(Paths.get(armyPath)).get(0));
         ArrayList<Unit> newUnits = new ArrayList<>();
-        Files.lines(Path.of(file.getAbsolutePath()))
+        Files.lines(Path.of(armyPath))
                 .skip(1)
                 .forEach(line -> {
                     String[] column = line.split(",");
