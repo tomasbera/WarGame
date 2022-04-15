@@ -21,8 +21,6 @@ import java.util.ResourceBundle;
 
 public class SimulationViewController implements Initializable {
 
-
-
     //winning Army Tableview
     @FXML private TableView<Unit> winningArmyTable;
     @FXML private TableColumn<Unit, String> winningArmyUT;
@@ -152,7 +150,11 @@ public class SimulationViewController implements Initializable {
     @FXML
     public void simulateBattle() {
         changeTextNumberOfSimulation++;
-        if(chosenTerrain == 0) chosenTerrain = 1;
+        if(chosenTerrain == 0){
+            chosenTerrain = 1;
+            layoutText.setText("Hill");
+            layoutImageView.setImage(getImageByName("hill"));
+        }
 
         ArrayList<Army> armies = resetMethod();
         battle = new Battle(armies.get(0), armies.get(1));
@@ -176,6 +178,8 @@ public class SimulationViewController implements Initializable {
         ArrayList<Unit> armyOneUnits = new ArrayList<>();
         ArrayList<Unit> armyTwoUnits = new ArrayList<>();
 
+        System.out.println(WarGamesGUI.ArmyOne.getUnits().size());
+
         WarGamesGUI.ArmyOne.getUnits()
                 .forEach(unit -> armyOneUnits.add(unit.deepCopyUnit(unit)));
         WarGamesGUI.ArmyTwo.getUnits()
@@ -188,7 +192,11 @@ public class SimulationViewController implements Initializable {
         armyTwo.addAll(armyTwoUnits);
 
         armies.add(armyOne);
+        updateArmyOneTable(armyOne);
+
         armies.add(armyTwo);
+        updateArmyTwoTable(armyTwo);
+        WinningArmyText.setText("Previous Winner");
 
         return armies;
     }
