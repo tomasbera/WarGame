@@ -9,10 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,9 +18,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class SimulationViewController implements Initializable {
+
 
 
     //winning Army Tableview
@@ -57,10 +54,13 @@ public class SimulationViewController implements Initializable {
     @FXML private Text armyTwoText;
     private int scoreArmyOne;
     private int scoreArmyTwo;
+    @FXML private Button SimulationButtonText;
+    @FXML private Text WinningArmyText;
 
     //battle
     private Battle battle;
     private Army winningArmy;
+    private int changeTextNumberOfSimulation;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,8 +69,8 @@ public class SimulationViewController implements Initializable {
         warGamesTerrainInput.getItems().add(1, "Forest");
         warGamesTerrainInput.getItems().add(2, "Plains");
 
-        updateArmyOneTable();
-        updateArmyTwoTable();
+        updateArmyOneTable(WarGamesGUI.ArmyOne);
+        updateArmyTwoTable(WarGamesGUI.ArmyTwo);
     }
 
     /**
@@ -113,40 +113,45 @@ public class SimulationViewController implements Initializable {
     }
 
     @FXML
-    public void updateArmyOneTable(){
+    public void updateArmyOneTable(Army thisArmy){
         //army one table update
         if(WarGamesGUI.ArmyOne.getName().isEmpty())armyOneText.setText("Army not chosen");
         else armyOneText.setText(WarGamesGUI.ArmyOne.getName());
 
 
-        unitToStringMethod(1);
+        unitToStringMethod(thisArmy, 1);
         ArmyOneList.setItems(FXCollections.observableArrayList(armyOneArray.stream().toList()));
     }
 
     @FXML
-    public void updateArmyTwoTable(){
+    public void updateArmyTwoTable(Army thisArmy){
         //army one table update
         if(WarGamesGUI.ArmyTwo.getName().isEmpty())armyTwoText.setText("Army not chosen");
         else armyTwoText.setText(WarGamesGUI.ArmyTwo.getName());
 
-        unitToStringMethod(2);
+        unitToStringMethod(thisArmy, 2);
         ArmyTwoList.setItems(FXCollections.observableArrayList(armyTwoArray.stream().toList()));
     }
 
     @FXML
     public void updateWinner(){
         //winning army table update
+        if (changeTextNumberOfSimulation > 0) SimulationButtonText.setText("Reset and Simulate");
+
         winningArmyUT.setCellValueFactory(new PropertyValueFactory<Unit, String>("name"));
         winningArmyUN.setCellValueFactory(new PropertyValueFactory<Unit, String>("name"));
         winningArmyH.setCellValueFactory(new PropertyValueFactory<Unit, Integer>("health"));
 
         winningArmyTable.setItems(FXCollections.observableArrayList(
                 winningArmy.getUnits().stream().toList()));
+
+        WinningArmyText.setText(winningArmy.getName());
         winningArmyTable.refresh();
     }
 
     @FXML
     public void simulateBattle() {
+        changeTextNumberOfSimulation++;
         if(chosenTerrain == 0) chosenTerrain = 1;
 
         ArrayList<Army> armies = resetMethod();
@@ -161,8 +166,8 @@ public class SimulationViewController implements Initializable {
         scoreText.setText(scoreArmyOne + "-" + scoreArmyTwo);
 
         updateWinner();
-        updateArmyOneTable();
-        updateArmyTwoTable();
+        updateArmyOneTable(armies.get(0));
+        updateArmyTwoTable(armies.get(1));
     }
 
     @FXML
@@ -193,20 +198,20 @@ public class SimulationViewController implements Initializable {
         SwitchScene.switchScene("ArmyDetailView", event);
     }
 
-    public void unitToStringMethod(int armyNum){
+    public void unitToStringMethod(Army thisArmy, int armyNum){
         if(armyNum == 1){
             armyOneArray = new ArrayList<>();
-            armyOneArray.add("Infantry Unit: " + WarGamesGUI.ArmyOne.getInfantryUnits().size());
-            armyOneArray.add("Range Unit: " + WarGamesGUI.ArmyOne.getRangeUnits().size());
-            armyOneArray.add("Cavalry Unit: " + WarGamesGUI.ArmyOne.getCavalryUnits().size());
-            armyOneArray.add("Commander Unit: " + WarGamesGUI.ArmyOne.getCommanderUnits().size());
+            armyOneArray.add("Infantry Unit: " + thisArmy.getInfantryUnits().size());
+            armyOneArray.add("Range Unit: " + thisArmy.getRangeUnits().size());
+            armyOneArray.add("Cavalry Unit: " + thisArmy.getCavalryUnits().size());
+            armyOneArray.add("Commander Unit: " + thisArmy.getCommanderUnits().size());
 
         } else {
             armyTwoArray = new ArrayList<>();
-            armyTwoArray.add("Infantry Unit: " + WarGamesGUI.ArmyTwo.getInfantryUnits().size());
-            armyTwoArray.add("Range Unit: " + WarGamesGUI.ArmyTwo.getRangeUnits().size());
-            armyTwoArray.add("Cavalry Unit: " + WarGamesGUI.ArmyTwo.getCavalryUnits().size());
-            armyTwoArray.add("Commander Unit: " + WarGamesGUI.ArmyTwo.getCommanderUnits().size());
+            armyTwoArray.add("Infantry Unit: " + thisArmy.getInfantryUnits().size());
+            armyTwoArray.add("Range Unit: " + thisArmy.getRangeUnits().size());
+            armyTwoArray.add("Cavalry Unit: " + thisArmy.getCavalryUnits().size());
+            armyTwoArray.add("Commander Unit: " + thisArmy.getCommanderUnits().size());
         }
     }
 }

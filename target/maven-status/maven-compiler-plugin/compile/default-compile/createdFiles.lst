@@ -1,15 +1,15 @@
 BattleSimulation\UnitFactory.class
 Maintnance\ArmyDetailsViewController.class
+Maintnance\AlertBox.class
 Maintnance\SimulationViewController$1.class
 Maintnance\WarGamesGUI.class
 BattleSimulation\Army.class
-AlertBox.class
 Maintnance\SimulationViewController.class
 SpecificUnits\CommanderUnit.class
 SpecificUnits\InfantryUnit.class
+BattleSimulation\ArmyFiles.class
 BattleSimulation\Battle.class
 SpecificUnits\CavalryUnit.class
-BattleSimulation\armyFiles.class
 Maintnance\SwitchScene.class
 Maintnance\WarGameApp.class
 SpecificUnits\RangedUnit.class
